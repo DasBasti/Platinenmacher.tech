@@ -1,4 +1,4 @@
-import { useEffect, useRef, LegacyRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 type PCBImageProps = {
     code: string,

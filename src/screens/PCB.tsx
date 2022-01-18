@@ -1,20 +1,22 @@
 import { useAsync } from "react-async";
 import { Container } from "react-bootstrap";
 import PCBListElement from '../components/PCBListElement';
+import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
 
 const loadPCBs = async () => 
     await fetch("/api/list?page=1&num=10").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
 
 export default function PCB() {
+    const { data, isLoading } = useAsync({ promiseFn: loadPCBs})
 
-    const { data, err, isLoading } = useAsync({ promiseFn: loadPCBs})
-    console.log(isLoading, err, data)
+    
+
+    console.log(isLoading, data)
     if (isLoading) return (<div>Loading...</div>)
-    if (err) return (<div>Error</div>)
     if (data) return (
         <Container>
-            {data.entries.map((pcb, key)=>
+            {data.entries.map((pcb:PCBListElementProps, key:number)=>
                 <PCBListElement key={key} {...pcb} />
             )}
         </Container>
