@@ -30,13 +30,13 @@ export default function Panel() {
             rows.push(row);
         }
 
-        return <table>
+        return <div style={{display:'flex', justifyContent: "center"}}><table>
             {rows.map((row: Array<JSX.Element>, key: number) =>
                 <tr key={key}>
                     {row.map((led) => led)}
                 </tr>)
             }
-        </table>
+        </table></div>
     }
 
     return (
