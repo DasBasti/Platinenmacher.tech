@@ -5,7 +5,9 @@ export default function Navigation() {
     return (
         <Navbar expand="lg">
             <Container>
-                <Navbar.Brand href="/">Der Platinenmacher</Navbar.Brand>
+                <Navbar.Brand href="/">
+                    <img src={process.env.PUBLIC_URL + "/img/CHIPlogo.png"} alt="Chip Logo" width={64}/>{' '}
+                    Der Platinenmacher</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className="me-auto">
