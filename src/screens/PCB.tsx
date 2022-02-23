@@ -3,8 +3,10 @@ import { Container } from "react-bootstrap";
 import PCBListElement from '../components/PCBListElement';
 import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
 
+var page=1;
+var num=10;
 const loadPCBs = async () => 
-    await fetch("/api/list?page=1&num=10").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
+    await fetch("/api/list?page="+page+"&num="+num).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
 
 export default function PCB() {
