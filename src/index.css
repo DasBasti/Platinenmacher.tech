@@ -1,3 +1,36 @@
+:root {
+  /* CSS HEX */
+  --timberwolf: #daddd8ff;
+  --middle-green-yellow: #91aa4bff;
+  --june-bud: #b7ce63ff;
+  --dark-moss-green: #4f5d1dff;
+  --twitch-green: #019203;
+  --bs-dark: #91aa4bff;
+}
+
+.bg-primary {
+  background-color: var(--middle-green-yellow) !important;
+}
+
+.btn-primary {
+  background-color: var(--june-bud) !important;
+  border-color: var(--dark-moss-green) !important;
+}
+
+.bg-dark {
+  background-color: var(--middle-green-yellow) !important;
+}
+
+.navbar {
+  background-color: var(--middle-green-yellow) !important;
+  border-color: var(--dark-moss-green) !important;
+  border-width: 0px;
+  border-bottom-width: thin !important;
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
