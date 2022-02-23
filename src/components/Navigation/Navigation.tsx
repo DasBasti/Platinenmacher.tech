@@ -13,7 +13,7 @@ export default function Navigation() {
                     <Nav className="me-auto">
                         <Nav.Link href="/projekte">Projekte</Nav.Link>
                         <Nav.Link href="/pcb">Community Board</Nav.Link>
-                        <Nav.Link href="/matrix">LED Matrix</Nav.Link>
+                        <Nav.Link href="/panel">LED Matrix</Nav.Link>
                     </Nav>
                     <Nav className="me-auto">
                         <Nav.Link href="https://www.twitch.tv/platinenmacher">Twitch</Nav.Link>

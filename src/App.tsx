@@ -9,6 +9,7 @@ import TopNavigation from './components/Navigation'
 import Info from './screens/Info';
 import PCB from './screens/PCB';
 import Blog from './screens/Blog';
+import Panel from './screens/Panel';
 import { client_id, getToken, getUsername } from './helper/login';
 
 import tmi from 'tmi.js';
@@ -96,6 +97,7 @@ export default function App() {
                     <Route path="/pcb" element={<PCB />} />
                     <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
                     <Route path="/logout" element={<Logout />} />
+                    <Route path="/panel" element={<Panel />} />
                     <Route path="/" element={<Blog />} />
                 </Routes>
             </BrowserRouter>
