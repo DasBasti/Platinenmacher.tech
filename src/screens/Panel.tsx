@@ -16,7 +16,7 @@ export default function Panel() {
         for (let x = 0; x < 32; x++) {
             let row: Array<JSX.Element> = [];
             for (let y = 0; y < 32; y++) {
-                const offset = x * 32 + y;
+                const offset = y * 32 + x;
                 if (data[offset]) { 
                     row.push(<td className='led-table'>
                         <LED key={data[offset].id} {...data[offset]} />
