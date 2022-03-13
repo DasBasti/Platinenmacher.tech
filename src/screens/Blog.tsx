@@ -36,7 +36,7 @@ export default function Blog() {
                     <ListGroup.Item><a href="https://www.youtube.com/channel/UCPyRzwxnI9-pL5-50JkxY5Q">Youtube</a></ListGroup.Item>
                     <ListGroup.Item><a href="https://kurzschluss-blog.de/">Blog</a></ListGroup.Item>
                     <ListGroup.Item><a href="http://kurzschlussjunkies.de/">Podcast</a></ListGroup.Item>
-                    <ListGroup.Item><a href="https://github.com/DasBasti">HitHub</a></ListGroup.Item>
+                    <ListGroup.Item><a href="https://github.com/DasBasti">GitHub</a></ListGroup.Item>
                 </ListGroup>
             </Col>
             <Col md={1} />
