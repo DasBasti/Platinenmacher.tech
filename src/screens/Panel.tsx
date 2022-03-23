@@ -16,13 +16,13 @@ export default function Panel() {
         for (let x = 0; x < 32; x++) {
             let row: Array<JSX.Element> = [];
             for (let y = 0; y < 32; y++) {
-                const offset = y * 32 + x;
+                const offset = x * 32 + y;
                 if (data[offset]) { 
-                    row.push(<td className='led-table'>
+                    row.push(<td className='led-table-row'>
                         <LED key={data[offset].id} {...data[offset]} />
                     </td>);
                 } else {
-                    row.push(<td className='led-table'>
+                    row.push(<td className='led-table-row'>
                         <LED key="letze" animation={false} color={0} id={1024} owner={""} last_seen={""}  />
                     </td>);
                 }
@@ -30,7 +30,7 @@ export default function Panel() {
             rows.push(row);
         }
 
-        return <div style={{display:'flex', justifyContent: "center"}}><table>
+        return <div style={{display:'flex', justifyContent: "center"}}><table className='led-table'>
             {rows.map((row: Array<JSX.Element>, key: number) =>
                 <tr key={key}>
                     {row.map((led) => led)}
