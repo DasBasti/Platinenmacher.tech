@@ -22,13 +22,15 @@ export default function ProjectFeed(props: ProjectFeedProps) {
                 return <Container>
                     <Row>
                         {projects.map((topic: any, key: number) =>
-                                <Card as={Col} key={key} lg={3} style={{ margin:".5em" }}>
+                            <Card as={Col} key={key} lg={3} style={{ margin: ".5em" }}>
+                                <a href={`https://kurzschluss-junkies.de/t/${topic.id}`}>
                                     <Card.Img variant="top" src={topic.image_url} className={"projectImage"} width={"100%"} height={"350"} />
-                                    <Card.Body>
-                                        <Card.Title>{topic.title}</Card.Title>
-                                        <Button variant="primary" href={`https://kurzschluss-junkies.de/t/${topic.id}`}>Mehr...</Button>
-                                    </Card.Body>
-                                </Card>
+                                </a>
+                                <Card.Body>
+                                    <Card.Title>{topic.title}</Card.Title>
+                                    <Button variant="primary" href={`https://kurzschluss-junkies.de/t/${topic.id}`}>Mehr...</Button>
+                                </Card.Body>
+                            </Card>
                         )}
                     </Row>
                 </Container>
