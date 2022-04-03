@@ -62,3 +62,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.projectImage {
+  margin-top: 12px;
+  object-fit: cover;
+}
