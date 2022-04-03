@@ -1,18 +1,15 @@
-import { useAsync } from "react-async";
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import PCBListElement from '../components/PCBListElement';
 
-const loadPCBs = async () => /* URL mit Einträgen */
-    await fetch("/api/list?page=1&num=10").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
+import ProjectFeed from "../components/ProjectFeed";
 
 
 export default function Blog() {
 
-    return (<Container>
+    return (<>
+    <Container>
         <Row>
-            <Col md={1} />
-            <Col md={7}>
+            <Col md={8}>
                 <h2>Neuigkeiten</h2>
                 <hr />
                 <p>
@@ -23,12 +20,12 @@ export default function Blog() {
                 </p><p>
                     Auf der Seite sind die Bilder gelistet, die schon einmal im Chat gesehen wurden. Die Bilder können mit einfachem Klick in eurem Namen beim Platinenmacher im Chat gepostet werden. Dazu ist ein OAuth Login über Twitch notwendig. Dabei werden weder euer Passwort noch eure Email Adresse an platinenmacher.tech übertragen.
                 </p><p>
-                    <Button href="https://www.twitch.tv/platinenmacher">Platinenmacher »</Button>
-                </p><p>
+                    <Button href="https://www.twitch.tv/platinenmacher" style={{marginRight:"var(--bs-gutter-x)"}}>Platinenmacher »</Button>
+                
                     <Button href="https://www.twitch.tv/thebrutzler">TheBrutzler »</Button>
                 </p>
             </Col>
-            <Col md={3}>
+            <Col md={4}>
                 <h2>Links</h2>
                 <hr />
                 <ListGroup>
@@ -39,8 +36,12 @@ export default function Blog() {
                     <ListGroup.Item><a href="https://github.com/DasBasti">GitHub</a></ListGroup.Item>
                 </ListGroup>
             </Col>
-            <Col md={1} />
         </Row>
     </Container>
+    <Container>
+        <Row><Col><h2>Projekte</h2></Col></Row>
+    </Container>
+    <ProjectFeed />
+    </>
     );
 }
