@@ -67,3 +67,12 @@ code {
   margin-top: 12px;
   object-fit: cover;
 }
+
+.linkListLinks {
+ color:black;
+ text-decoration: none;
+}
+
+.linkListLinks:hover {
+  color: var(--twitch-green);
+}
