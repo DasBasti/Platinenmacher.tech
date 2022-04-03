@@ -92,6 +92,7 @@ export default function App() {
         <ChatProvider value={chat}>
             <BrowserRouter>
                 <TopNavigation />
+                <div style={{marginTop:"95px"}}>
                 <Routes>
                     <Route path="/info" element={<Info />} />
                     <Route path="/pcb" element={<PCB />} />
@@ -100,6 +101,7 @@ export default function App() {
                     <Route path="/panel" element={<Panel />} />
                     <Route path="/" element={<Blog />} />
                 </Routes>
+                </div>
             </BrowserRouter>
         </ChatProvider>
     );

@@ -3,7 +3,7 @@ import { isLoggedIn, client_id, response_type, redirect_uri, scope, getUsername 
 
 export default function Navigation() {
     return (
-        <Navbar expand="lg">
+        <Navbar expand="lg" fixed="top" >
             <Container>
                 <Navbar.Brand href="/">
                     <img src={process.env.PUBLIC_URL + "/img/CHIPlogo.png"} alt="Chip Logo" width={64}/>{' '}
