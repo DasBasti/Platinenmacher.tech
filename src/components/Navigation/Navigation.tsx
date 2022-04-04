@@ -1,5 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { isLoggedIn, client_id, response_type, redirect_uri, scope, getUsername } from '../../helper/login';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export default function Navigation() {
     return (
@@ -16,8 +19,8 @@ export default function Navigation() {
                         <Nav.Link href="/panel">LED Matrix</Nav.Link>
                     </Nav>
                     <Nav className="me-auto">
-                        <Nav.Link href="https://www.twitch.tv/platinenmacher">Twitch</Nav.Link>
-                        <Nav.Link href="https://www.youtube.com/channel/UCPyRzwxnI9-pL5-50JkxY5Q">Youtube</Nav.Link>
+                        <Nav.Link href="https://www.twitch.tv/platinenmacher"><FontAwesomeIcon icon={faTwitch as IconProp} />Twitch</Nav.Link>
+                        <Nav.Link href="https://www.youtube.com/channel/UCPyRzwxnI9-pL5-50JkxY5Q"><FontAwesomeIcon icon={faYoutube as IconProp} />Youtube</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Nav>
