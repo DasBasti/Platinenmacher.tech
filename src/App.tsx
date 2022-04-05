@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './index.css';
 
@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import TopNavigation from './components/Navigation'
 
-import Info from './screens/Info';
+import Impressum from './screens/Impressum';
 import PCB from './screens/PCB';
 import Blog from './screens/Blog';
 import Panel from './screens/Panel';
@@ -94,7 +94,7 @@ export default function App() {
                 <TopNavigation />
                 <div style={{marginTop:"95px"}}>
                 <Routes>
-                    <Route path="/info" element={<Info />} />
+                    <Route path="/impressum" element={<Impressum />} />
                     <Route path="/pcb" element={<PCB />} />
                     <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
                     <Route path="/logout" element={<Logout />} />
