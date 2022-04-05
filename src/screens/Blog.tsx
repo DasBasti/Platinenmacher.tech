@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitch, faYoutube, faWordpress, faWordpressSimple, faGithub} from '@fortawesome/free-brands-svg-icons';
+import { faTwitch, faYoutube, faWordpress, faGithub, faDiscourse} from '@fortawesome/free-brands-svg-icons';
 import { faPodcast } from "@fortawesome/free-solid-svg-icons";
 
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
@@ -38,6 +38,7 @@ export default function Blog() {
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://www.twitch.tv/platinenmacher"><FontAwesomeIcon icon={faTwitch as IconProp} /> Twitch</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://kurzschluss-blog.de/"><FontAwesomeIcon icon={faWordpress as IconProp} /> Blog</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="http://kurzschlussjunkies.de/"><FontAwesomeIcon icon={faPodcast as IconProp} /> Podcast</a></ListGroup.Item>
+                    <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://kurzschluss-junkies.de/"><FontAwesomeIcon icon={faDiscourse as IconProp} /> Forum</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://github.com/DasBasti"><FontAwesomeIcon icon={faGithub as IconProp} /> GitHub</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://www.youtube.com/channel/UCPyRzwxnI9-pL5-50JkxY5Q"><FontAwesomeIcon icon={faYoutube as IconProp} /> Youtube</a></ListGroup.Item>
                 </ListGroup>
@@ -48,6 +49,7 @@ export default function Blog() {
         <Row><Col><h2>Projekte</h2></Col></Row>
     </Container>
     <ProjectFeed />
+    <Container><a className="linkListLinks" href="https://kurzschluss-junkies.de">Kurzschluss Junkies Forum</a></Container>
     </>
     );
 }
