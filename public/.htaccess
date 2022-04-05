@@ -1,0 +1,8 @@
+    Options -MultiViews
+    RewriteEngine On
+    # Ignore Requests to APIs
+    RewriteRule ^pcb.*$ - [QSA,L]
+    RewriteRule ^api.*$ - [QSA,L]
+    RewriteRule ^indianavi.*$ - [QSA,L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.html [QSA,L]

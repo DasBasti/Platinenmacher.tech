@@ -5,7 +5,7 @@ import PCBListElement from '../components/PCBListElement';
 import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
 
 const loadPCBs = async (props:any) => 
-    await fetch("/api/list?page="+props.page+"&num="+props.num).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
+    await fetch("/pcb/api/list?page="+props.page+"&num="+props.num).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
 
 export default function PCB() {

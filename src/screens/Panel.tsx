@@ -4,7 +4,7 @@ import LED from '../components/LED';
 import { LEDProps } from '../components/LED/LED';
 
 const loadLEDs = async () =>
-    await fetch("/panel").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
+    await fetch("/pcb/panel").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
 
 export default function Panel() {

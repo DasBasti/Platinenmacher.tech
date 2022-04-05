@@ -36,7 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "rsync -arv build/ root@platinenmacher.tech:/var/www/html"
   },
   "eslintConfig": {
     "extends": [
@@ -56,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://platinenmacher.tech/pcb"
+  "proxy": "https://platinenmacher.tech/"
 }

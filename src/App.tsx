@@ -95,7 +95,7 @@ export default function App() {
                 <div style={{marginTop:"95px"}}>
                 <Routes>
                     <Route path="/impressum" element={<Impressum />} />
-                    <Route path="/pcb" element={<PCB />} />
+                    <Route path="/community" element={<PCB />} />
                     <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/panel" element={<Panel />} />
