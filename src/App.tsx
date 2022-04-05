@@ -14,6 +14,7 @@ import { client_id, getToken, getUsername } from './helper/login';
 
 import tmi from 'tmi.js';
 import { ChatProvider } from './context/chat';
+import Bottom from './components/Bottom';
 
 /* TODO: refactor */
 const OAuthLogin = () => {
@@ -102,6 +103,7 @@ export default function App() {
                     <Route path="/" element={<Blog />} />
                 </Routes>
                 </div>
+                <Bottom/>
             </BrowserRouter>
         </ChatProvider>
     );
