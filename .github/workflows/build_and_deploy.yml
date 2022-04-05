@@ -1,0 +1,24 @@
+name: build-and-deploy
+on: 
+  push:
+    branches: [main]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+        cache: 'yarn'
+    - run: yarn install
+    - run: yarn build
+    - run: mkdir ~/.ssh
+    - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
+    - run: chmod 400 ~/.ssh/github-action
+    - run: echo -e "Host platinenmacher.tech\n\tUser root\n\tHostname 62.171.131.55\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+    - run: yarn deploy
