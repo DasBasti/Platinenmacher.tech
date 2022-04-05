@@ -22,7 +22,7 @@ export default function Blog() {
                     Aktuell entsteht gerade das PCB Projekt. Das Platinenmacher Community Board.
                 </p><p style={{ textAlign: 'center' }}>
                     <img src={process.env.PUBLIC_URL + "/img/pcb.png"} alt="PCB Simulator Bild mit Lötkolbensymbol" /><br />
-                    <Link to="pcb">Hier geht es zur Projektseite</Link>
+                    <Link to="community">Hier geht es zur Projektseite</Link>
                 </p><p>
                     Auf der Seite sind die Bilder gelistet, die schon einmal im Chat gesehen wurden. Die Bilder können mit einfachem Klick in eurem Namen beim Platinenmacher im Chat gepostet werden. Dazu ist ein OAuth Login über Twitch notwendig. Dabei werden weder euer Passwort noch eure Email Adresse an platinenmacher.tech übertragen.
                 </p><p>
