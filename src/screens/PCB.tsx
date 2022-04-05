@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAsync } from "react-async";
-import { Button, Container, Pagination } from "react-bootstrap";
+import { Container, Pagination } from "react-bootstrap";
 import PCBListElement from '../components/PCBListElement';
 import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
 
@@ -10,14 +10,13 @@ const loadPCBs = async (props:any) =>
 
 export default function PCB() {
     const [page, setPage] = useState(1);
-    const [num, setNum] = useState(10);
+    const [num] = useState(10);
     const { data, isLoading, reload } = useAsync({ promiseFn:loadPCBs, page, num})
    
     useEffect(()=>{
         reload()
     },[reload, page])
 
-    console.log(isLoading, data)
     if (isLoading) return (<div>Loading...</div>)
     if (data) {
         let pages = [];

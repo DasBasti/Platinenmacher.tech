@@ -1,6 +1,3 @@
-import { stat } from "fs";
-import { act } from "react-dom/test-utils";
-
 export const client_id = "00kizhr27nj2bbo4fj213qkzxy5v32";
 export const redirect_uri = "http://localhost:3000/login/twitch/authorized";
 export const response_type = "token";

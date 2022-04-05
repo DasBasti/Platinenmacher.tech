@@ -1,5 +1,5 @@
-import { Async, useAsync } from "react-async";
-import { Row, Col, Container, Image, Card, Button, Spinner } from "react-bootstrap";
+import { Async } from "react-async";
+import { Row, Col, Container, Card, Button, Spinner } from "react-bootstrap";
 
 
 type ProjectFeedProps = {

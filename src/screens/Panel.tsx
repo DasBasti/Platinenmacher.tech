@@ -25,6 +25,7 @@ export default function Panel() {
             } else {
                 temp_data[idx].highlight = false;
             }
+            return temp_data[idx];
         })
         updatePanelData(temp_data);
     }
