@@ -65,22 +65,6 @@ export default function App() {
         setToasts(toasts => [...toasts.splice(key, 1)]);
     };
 
-    // Called every time a message comes in
-    function onMessageHandler(target: any, context: any, msg: any, self: any) {
-        //if (self) { return; } // Ignore messages from the bot
-        console.log(context);
-        let datetime = ""
-        if (context["tmi-sent-ts"])
-            datetime = new Date(context["tmi-sent-ts"] * 1000).toLocaleDateString("de-DE")
-        setToasts(toasts => [...toasts, { username: context["display-name"], message: msg, datetime: datetime, onTimeout: hideToast }]);
-    }
-
-    // Called every time the bot connects to Twitch chat
-    function onConnectedHandler(addr: any, port: any) {
-        console.log(`* Connected to ${addr}:${port}`);
-        setToasts(toasts => [...toasts, { username: "Twitch Chat", message: "Connected", datetime: "now", onTimeout: hideToast }]);
-    }
-
     useEffect(() => {
         // Define configuration options
         const opts = {
@@ -97,6 +81,23 @@ export default function App() {
     }, []);
 
     useEffect(() => {
+
+        // Called every time a message comes in
+        function onMessageHandler(target: any, context: any, msg: any, self: any) {
+            //if (self) { return; } // Ignore messages from the bot
+            console.log(context);
+            let datetime = ""
+            if (context["tmi-sent-ts"])
+                datetime = new Date(context["tmi-sent-ts"] * 1000).toLocaleDateString("de-DE")
+            setToasts(toasts => [...toasts, { username: context["display-name"], message: msg, datetime: datetime, onTimeout: hideToast }]);
+        }
+
+        // Called every time the bot connects to Twitch chat
+        function onConnectedHandler(addr: any, port: any) {
+            console.log(`* Connected to ${addr}:${port}`);
+            setToasts(toasts => [...toasts, { username: "Twitch Chat", message: "Connected", datetime: "now", onTimeout: hideToast }]);
+        }
+
         chat?.on('message', onMessageHandler);
         chat?.on('connected', onConnectedHandler);
         chat?.connect();
