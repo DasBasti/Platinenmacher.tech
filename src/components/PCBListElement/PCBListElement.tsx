@@ -35,9 +35,12 @@ export default function PCBListElement(props: PCBListElementProps) {
         return(<div></div>);
     }
 
-    const sendChat = (str:String)=>{
+    const sendChat = (str:String, name?:String)=>{
         if(chat) {
-            chat.say("Platinenmacher", "!pcb "+str).then(()=>alert("Versendet"));        
+            let code = str;
+            if (name)
+                code = name;
+            chat.say("Platinenmacher", "!pcb "+code).then(()=>alert("Versendet"));        
         }
     }
 
@@ -47,7 +50,7 @@ export default function PCBListElement(props: PCBListElementProps) {
             <Col md={1}><UpDownVote upvotes={upvotes} voted={voted}/></Col>
             <Col md={2}>{username}</Col>
             <Col md={4}>
-                <Row><Col><PCBImage code={str} /></Col></Row>
+                <Row><Col><PCBImage code={str} onClick={()=>{if(loggedin) sendChat(str, name);}}/></Col></Row>
                 <Row><Col>{name}</Col></Row></Col>
             <Col md={1}>
             <Row><Col>
