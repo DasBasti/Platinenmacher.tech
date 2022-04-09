@@ -15,6 +15,9 @@ import { client_id, getToken, getUsername } from './helper/login';
 import tmi from 'tmi.js';
 import { ChatProvider } from './context/chat';
 import Bottom from './components/Bottom';
+import { ToastContainer } from 'react-bootstrap';
+import { ChatToastProps } from './components/ChatToast/ChatToast';
+import ChatToast from './components/ChatToast';
 
 /* TODO: refactor */
 const OAuthLogin = () => {
@@ -53,19 +56,30 @@ const Logout = () => {
     return (null);
 }
 
-// Called every time a message comes in
-function onMessageHandler(target: any, context: any, msg: any, self: any) {
-    if (self) { return; } // Ignore messages from the bot
-    console.log(`* ${context} - ${msg}`);
-}
-
-// Called every time the bot connects to Twitch chat
-function onConnectedHandler(addr: any, port: any) {
-    console.log(`* Connected to ${addr}:${port}`);
-}
-
 export default function App() {
     const [chat, setChat] = useState<tmi.Client>();
+    const [toasts, setToasts] = useState<Array<ChatToastProps>>([]);
+
+    const hideToast = (ref: HTMLDivElement, key: number) => {
+        ref.hidden = true;
+        setToasts(toasts => [...toasts.splice(key, 1)]);
+    };
+
+    // Called every time a message comes in
+    function onMessageHandler(target: any, context: any, msg: any, self: any) {
+        //if (self) { return; } // Ignore messages from the bot
+        console.log(context);
+        let datetime = ""
+        if (context["tmi-sent-ts"])
+            datetime = new Date(context["tmi-sent-ts"] * 1000).toLocaleDateString("de-DE")
+        setToasts(toasts => [...toasts, { username: context["display-name"], message: msg, datetime: datetime, onTimeout: hideToast }]);
+    }
+
+    // Called every time the bot connects to Twitch chat
+    function onConnectedHandler(addr: any, port: any) {
+        console.log(`* Connected to ${addr}:${port}`);
+        setToasts(toasts => [...toasts, { username: "Twitch Chat", message: "Connected", datetime: "now", onTimeout: hideToast }]);
+    }
 
     useEffect(() => {
         // Define configuration options
@@ -93,17 +107,22 @@ export default function App() {
         <ChatProvider value={chat}>
             <BrowserRouter>
                 <TopNavigation />
-                <div style={{marginTop:"95px"}}>
-                <Routes>
-                    <Route path="/impressum" element={<Impressum />} />
-                    <Route path="/community" element={<PCB />} />
-                    <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
-                    <Route path="/logout" element={<Logout />} />
-                    <Route path="/panel" element={<Panel />} />
-                    <Route path="/" element={<Blog />} />
-                </Routes>
+                <div style={{ marginTop: "95px" }}>
+                    <Routes>
+                        <Route path="/impressum" element={<Impressum />} />
+                        <Route path="/community" element={<PCB />} />
+                        <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/panel" element={<Panel />} />
+                        <Route path="/" element={<Blog />} />
+                    </Routes>
                 </div>
-                <Bottom/>
+                <ToastContainer className="p-3" position="bottom-center">
+                    {toasts &&
+                        toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
+                    }
+                </ToastContainer>
+                <Bottom />
             </BrowserRouter>
         </ChatProvider>
     );
