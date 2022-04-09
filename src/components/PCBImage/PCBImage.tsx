@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { MouseEventHandler, useEffect, useRef } from 'react';
 
 type PCBImageProps = {
     code: string,
+    onClick?: MouseEventHandler<HTMLCanvasElement>,
 }
 
 export default function PCBImage(props: PCBImageProps) {
@@ -38,6 +39,6 @@ export default function PCBImage(props: PCBImageProps) {
     }, [code,canvasRef]);
 
     return (
-        <canvas ref={canvasRef} width={240} height={150} />
+        <canvas ref={canvasRef} width={240} height={150} onClick={props.onClick}/>
     )
 }
