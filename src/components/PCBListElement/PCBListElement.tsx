@@ -40,7 +40,7 @@ export default function PCBListElement(props: PCBListElementProps) {
             let code = str;
             if (name)
                 code = name;
-            chat.say("Platinenmacher", "!pcb "+code).then(()=>alert("Versendet"));        
+            chat.say("Platinenmacher", "!pcb "+code);        
         }
     }
 
