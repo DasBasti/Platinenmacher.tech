@@ -15,7 +15,7 @@ export default function ProjectFeed(props: ProjectFeedProps) {
 
 
     return <Async promiseFn={loadProjects}>
-        <Async.Pending><Spinner animation="border" /> Loading...</Async.Pending>
+        <Async.Pending><Spinner animation="border" style={{alignContent:"center"}}/> Loading...</Async.Pending>
         <Async.Fulfilled>
             {(data: any) => {
                 const projects = data.topic_list?.topics?.slice(1);
