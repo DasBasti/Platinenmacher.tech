@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAsync } from "react-async";
-import { Container, Pagination } from "react-bootstrap";
+import { Container, Pagination, Spinner } from "react-bootstrap";
 import PCBListElement from '../components/PCBListElement';
 import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
 
@@ -17,7 +17,7 @@ export default function PCB() {
         reload()
     },[reload, page])
 
-    if (isLoading) return (<div>Loading...</div>)
+    if (isLoading) return (<Container><Spinner animation="border" style={{alignContent:"center"}}/> Loading...</Container>)
     if (data) {
         let pages = [];
         for (let number = 1; number <= Math.ceil(data.total/num); number++) {

@@ -48,7 +48,7 @@ export default function Blog() {
     <Container>
         <Row><Col><h2>Projekte</h2></Col></Row>
     </Container>
-    <ProjectFeed />
+    <ProjectFeed num={3}/>
     <Container><a className="linkListLinks" href="https://kurzschluss-junkies.de">Kurzschluss Junkies Forum</a></Container>
     </>
     );

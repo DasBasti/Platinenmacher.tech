@@ -3,7 +3,7 @@ import { Row, Col, Container, Card, Button, Spinner } from "react-bootstrap";
 
 
 type ProjectFeedProps = {
-
+    num: number;
 }
 
 const loadProjects = async () => /* URL mit Projekteinträgen aus dem Forum */
@@ -15,10 +15,10 @@ export default function ProjectFeed(props: ProjectFeedProps) {
 
 
     return <Async promiseFn={loadProjects}>
-        <Async.Pending><Spinner animation="border" /> Loading...</Async.Pending>
+        <Async.Pending><Spinner animation="border" style={{alignContent:"center"}}/> Loading...</Async.Pending>
         <Async.Fulfilled>
             {(data: any) => {
-                const projects = data.topic_list?.topics?.slice(1);
+                const projects = data.topic_list?.topics?.slice(1, props.num+1);
                 return <Container>
                     <Row>
                         {projects.map((topic: any, key: number) =>
