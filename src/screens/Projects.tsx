@@ -4,7 +4,7 @@ import ProjectFeed from "../components/ProjectFeed";
 export default function Projects() {
     return (
         <Container>
-            <ProjectFeed />
+            <ProjectFeed num={100}/>
         </Container>
         )
     }

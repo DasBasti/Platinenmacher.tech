@@ -120,7 +120,7 @@ export default function App() {
                         <Route path="/" element={<Blog />} />
                     </Routes>
                 </div>
-                <ToastContainer className="p-3" position="bottom-center">
+                <ToastContainer className="p-3" position="top-end">
                     {toasts &&
                         toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
                     }
