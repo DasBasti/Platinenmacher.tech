@@ -18,6 +18,7 @@ import Bottom from './components/Bottom';
 import { ToastContainer } from 'react-bootstrap';
 import { ChatToastProps } from './components/ChatToast/ChatToast';
 import ChatToast from './components/ChatToast';
+import Projects from './screens/Projects';
 
 /* TODO: refactor */
 const OAuthLogin = () => {
@@ -115,6 +116,7 @@ export default function App() {
                         <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/panel" element={<Panel />} />
+                        <Route path="/projekte" element={<Projects/>} />
                         <Route path="/" element={<Blog />} />
                     </Routes>
                 </div>
