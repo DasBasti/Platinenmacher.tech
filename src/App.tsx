@@ -118,7 +118,7 @@ export default function App() {
                         <Route path="/" element={<Blog />} />
                     </Routes>
                 </div>
-                <ToastContainer className="p-3" position="bottom-end">
+                <ToastContainer className="p-3 position-fixed" position="bottom-end">
                     {toasts &&
                         toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
                     }
