@@ -62,8 +62,7 @@ export default function App() {
     const [toasts, setToasts] = useState<Array<ChatToastProps>>([]);
 
     const hideToast = (ref: HTMLDivElement, key: number) => {
-        ref.hidden = true;
-        setToasts(toasts => [...toasts.splice(key, 1)]);
+        ref.remove();
     };
 
     useEffect(() => {
@@ -104,7 +103,6 @@ export default function App() {
         chat?.connect();
     }, [chat]);
 
-
     return (
         <ChatProvider value={chat}>
             <BrowserRouter>
@@ -120,7 +118,7 @@ export default function App() {
                         <Route path="/" element={<Blog />} />
                     </Routes>
                 </div>
-                <ToastContainer className="p-3" position="bottom-end">
+                <ToastContainer className="p-3 position-fixed" position="bottom-end">
                     {toasts &&
                         toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
                     }
