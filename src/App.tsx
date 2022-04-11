@@ -62,8 +62,7 @@ export default function App() {
     const [toasts, setToasts] = useState<Array<ChatToastProps>>([]);
 
     const hideToast = (ref: HTMLDivElement, key: number) => {
-        ref.hidden = true;
-        setToasts(toasts => [...toasts.splice(key, 1)]);
+        ref.remove();
     };
 
     useEffect(() => {
@@ -103,7 +102,6 @@ export default function App() {
         chat?.on('connected', onConnectedHandler);
         chat?.connect();
     }, [chat]);
-
 
     return (
         <ChatProvider value={chat}>
