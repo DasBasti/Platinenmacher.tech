@@ -84,7 +84,7 @@ export default function App() {
 
     useEffect(()=> {
         setUser({username:getUsername()});
-    },[user]);
+    },[]);
 
     useEffect(() => {
 
