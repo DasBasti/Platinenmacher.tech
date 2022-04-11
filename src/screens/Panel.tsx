@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useAsync } from 'react-async';
 import LED from '../components/LED';
 import { LEDProps } from '../components/LED/LED';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { debounce } from 'lodash';
+import { Option } from 'react-bootstrap-typeahead/types/types';
 
 const loadLEDs = async () =>
     await fetch("/pcb/panel").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
@@ -11,8 +14,9 @@ export default function Panel() {
     const { data, isLoading, run } = useAsync({ deferFn: loadLEDs })
     const search_string = useRef<HTMLInputElement>(null);
     const [panel_data, updatePanelData] = useState<Array<LEDProps>>();
+    const [usernames, setUsernames] = useState<Array<string>>([]);
 
-    const search_for = (search: string | undefined) => {
+    const search_for = debounce((search: string | undefined) => {
         if (!search)
             return;
         if (!data)
@@ -28,15 +32,18 @@ export default function Panel() {
             return temp_data[idx];
         })
         updatePanelData(temp_data);
-    }
+    }, 300);
 
     useEffect(() => {
         run(loadLEDs);
     }, [run])
 
     useEffect(() => {
-        if (data)
-            updatePanelData(data);
+        if (data){
+                        updatePanelData(data);
+                        setUsernames([...data.map((u:any)=>u.owner).filter((e:string)=>e?e:false)]         
+                        );
+        }
     }, [updatePanelData, data])
 
     if (isLoading) return (<div>Loading...</div>)
@@ -61,7 +68,14 @@ export default function Panel() {
         }
 
         return <div>
-            <input ref={search_string} onChange={() => { search_for(search_string.current?.value) }} />
+            <div style={{ position: 'absolute', margin: 5 }}>
+                <label htmlFor='search'>User: </label>
+                <Typeahead
+                id='user_search_box'
+                    onChange={(selection) => { if(selection.length)search_for(selection[0] as string); }}
+                    options={usernames}
+                />
+            </div>
             <div style={{ display: 'flex', justifyContent: "center" }}>
                 <table className='led-table'>
                     <tbody>
