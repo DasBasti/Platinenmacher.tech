@@ -1,5 +1,5 @@
 export const client_id = "00kizhr27nj2bbo4fj213qkzxy5v32";
-export const redirect_uri = `http://${process.env.REACT_APP_REDIRECT_URI}/login/twitch/authorized`;
+export const redirect_uri = `${process.env.REACT_APP_REDIRECT_URI}/login/twitch/authorized`;
 export const response_type = "token";
 export const scope = ["user:read:subscriptions", "channel:read:subscriptions", "chat:edit", "chat:read"];
 
