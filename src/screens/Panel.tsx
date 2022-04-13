@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAsync } from 'react-async';
 import LED from '../components/LED';
 import { LEDProps } from '../components/LED/LED';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { debounce } from 'lodash';
-import { Option } from 'react-bootstrap-typeahead/types/types';
 
 const loadLEDs = async () =>
     await fetch("/pcb/panel").then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
@@ -12,7 +11,6 @@ const loadLEDs = async () =>
 
 export default function Panel() {
     const { data, isLoading, run } = useAsync({ deferFn: loadLEDs })
-    const search_string = useRef<HTMLInputElement>(null);
     const [panel_data, updatePanelData] = useState<Array<LEDProps>>();
     const [usernames, setUsernames] = useState<Array<string>>([]);
 
