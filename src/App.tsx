@@ -38,7 +38,8 @@ const OAuthLogin = () => {
                 headers: [["Authorization", access_token ? "Bearer " + access_token : ""],
                 ["Client-Id", client_id]]
             }).then((res) => res.json().then(j => {
-                localStorage.setItem("username", j.data[0]['display_name'])
+                localStorage.setItem("username", j.data[0]['display_name']);
+                localStorage.setItem("uid", j.data[0]['id']);
             }))
 
             nav("/", { replace: true });

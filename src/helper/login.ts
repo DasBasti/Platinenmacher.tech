@@ -14,6 +14,11 @@ export function getToken(): string {
     return at ? at : ""
 }
 
+export function getUid(): string {
+    const u = localStorage.getItem("uid");
+    return u ? u : ""
+}
+
 export function getUsername(): string {
     const un = localStorage.getItem("username");
     return un ? un : ""
