@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# Platinenmacher.tech
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+It is the frontend part of the website [Platinenmacher.tech](https://platinenmacher.tech)
+
+## Mitmachen
+
+Ihr dürft gerne mitmachen. Sei es mit Code oder Fehlerberichten. Die Beiträge können sowohl in Deutsch, als auch in Englisch sein. Das Projekt ist ja hauptsächlich deutschsprachig.
+
+Forkt das Projekt und probiert einfach ein bisschen was aus.
+
+Wenn ihr Ideen zu fehlenden Funktionen und Änderungen habt, kommt doch zu uns in den Stream: [Twitch](https://twitch.tv/platinenmacher).
+
+## Contributing 
+
+This project welcomes contributions in form of code and or bug-reports. Since the projects main language is German, contributing in either language (German, English) is fine.
+
+Feel free to fork and try out something. 
+
+To talk about missing features or proposed changes join us over at [Twitch](https://twitch.tv/platinenmacher).
 
 ## Available Scripts
 
@@ -28,16 +45,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
