@@ -12,7 +12,6 @@ export default function ProjectFeed(props: ProjectFeedProps) {
         await fetch("https://kurzschluss-junkies.de/c/projekte/platinenmacher-stream/21.json",
         ).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
-    //@ts-ignore - Fix this!
     return (<Async promiseFn={loadProjects}>
         <Async.Pending><Spinner animation="border" style={{ alignContent: "center" }} /> Loading...</Async.Pending>
         <Async.Fulfilled>
