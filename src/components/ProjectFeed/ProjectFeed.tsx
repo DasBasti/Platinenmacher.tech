@@ -35,6 +35,10 @@ export default function ProjectFeed(props: ProjectFeedProps) {
                 </Container>
             }}
         </Async.Fulfilled>
-        <Async.Rejected>{error => console.log(error)}</Async.Rejected>
+        <Async.Rejected>
+            {
+            //@ts-ignore - Fix this!
+            error => console.log(error)}
+        </Async.Rejected>
     </Async>);
 } 
