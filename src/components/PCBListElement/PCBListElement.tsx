@@ -12,6 +12,7 @@ import UpDownVote from '../UpDownVote'
 import PCBImage from '../PCBImage'
 
 import { getToken, getUid, isLoggedIn } from '../../helper/login';
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export type PCBListElementProps = {
     upvotes: number,
@@ -75,22 +76,22 @@ export default function PCBListElement(props: PCBListElementProps) {
             <Col md={1}>
                 <Row><Col>
                     {username === user?.username &&
-                        <FontAwesomeIcon icon={faEdit} />}
+                        <FontAwesomeIcon icon={faEdit as IconProp} />}
                 </Col></Row>
                 <Row><Col>
                     {loggedin &&
-                        <div onClick={() => { sendChat(str) }}><FontAwesomeIcon icon={faCommentDots} /></div>}
+                        <div onClick={() => { sendChat(str) }}><FontAwesomeIcon icon={faCommentDots as IconProp} /></div>}
                 </Col></Row>
                 <Row><Col>
-                    {animation && <FontAwesomeIcon icon={faFilm} />}
+                    {animation && <FontAwesomeIcon icon={faFilm as IconProp} />}
                 </Col></Row>
                 <Row><Col>
                     <div onClick={() => { sendFav(str) }}>
-                        <FontAwesomeIcon icon={(favourite ? faHeartSolid : faHeartRegular)} />
+                        <FontAwesomeIcon icon={(favourite ? faHeartSolid as IconProp : faHeartRegular as IconProp)} />
                     </div>
                 </Col></Row>
                 <Row><Col>
-                    {loggedin && username === user?.username && <FontAwesomeIcon icon={faTrash} />}
+                    {loggedin && username === user?.username && <FontAwesomeIcon icon={faTrash as IconProp} />}
                 </Col></Row>
             </Col>
             <Col md={2}>Views: {counter}
