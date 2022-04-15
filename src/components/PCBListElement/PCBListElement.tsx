@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +11,7 @@ import UserContext from "../../context/user";
 import UpDownVote from '../UpDownVote'
 import PCBImage from '../PCBImage'
 
-import { isLoggedIn } from '../../helper/login';
+import { getToken, getUid, isLoggedIn } from '../../helper/login';
 
 export type PCBListElementProps = {
     upvotes: number,
@@ -30,6 +30,7 @@ export default function PCBListElement(props: PCBListElementProps) {
 
     const { upvotes, voted, username, str, name, counter, last_seen, fav, hidden, animation } = props;
     const loggedin = isLoggedIn();
+    const [favourite, setFavourite] = useState(fav);
     const chat = useContext(ChatContext);
     const user = useContext(UserContext);
 
@@ -44,6 +45,23 @@ export default function PCBListElement(props: PCBListElementProps) {
                 code = name;
             chat.say("Platinenmacher", "!pcb " + code);
         }
+    }
+
+    const sendFav = (str: string) => {
+        var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "/pcb/api/fav/" + str); // false for synchronous request
+            xmlHttp.setRequestHeader("Bearer", getToken());
+            xmlHttp.setRequestHeader("User", getUid());
+            xmlHttp.onload = () => {
+                if (xmlHttp.responseText === "like") {
+                    setFavourite(true)
+                } else if (xmlHttp.responseText === "dislike") {
+                    setFavourite(false)
+                } else {
+                    alert(xmlHttp.responseText)
+                }
+            };
+            xmlHttp.send(null);
     }
 
     return (
@@ -67,7 +85,9 @@ export default function PCBListElement(props: PCBListElementProps) {
                     {animation && <FontAwesomeIcon icon={faFilm} />}
                 </Col></Row>
                 <Row><Col>
-                    <FontAwesomeIcon icon={(fav ? faHeartSolid : faHeartRegular)} />
+                    <div onClick={() => { sendFav(str) }}>
+                        <FontAwesomeIcon icon={(favourite ? faHeartSolid : faHeartRegular)} />
+                    </div>
                 </Col></Row>
                 <Row><Col>
                     {loggedin && username === user?.username && <FontAwesomeIcon icon={faTrash} />}
