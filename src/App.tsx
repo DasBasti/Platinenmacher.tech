@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-bootstrap';
 import { ChatToastProps } from './components/ChatToast/ChatToast';
 import ChatToast from './components/ChatToast';
 import Projects from './screens/Projects';
+import { UserContextT, UserProvider } from './context/user';
 
 /* TODO: refactor */
 const OAuthLogin = () => {
@@ -60,10 +61,10 @@ const Logout = () => {
 export default function App() {
     const [chat, setChat] = useState<tmi.Client>();
     const [toasts, setToasts] = useState<Array<ChatToastProps>>([]);
+    const [user, setUser] = useState<UserContextT|undefined>(undefined)
 
     const hideToast = (ref: HTMLDivElement, key: number) => {
-        ref.hidden = true;
-        setToasts(toasts => [...toasts.splice(key, 1)]);
+        ref.remove();
     };
 
     useEffect(() => {
@@ -80,6 +81,10 @@ export default function App() {
         // Create a client with our options
         setChat(new tmi.client(opts));
     }, []);
+
+    useEffect(()=> {
+        setUser({username:getUsername()});
+    },[]);
 
     useEffect(() => {
 
@@ -104,9 +109,9 @@ export default function App() {
         chat?.connect();
     }, [chat]);
 
-
     return (
         <ChatProvider value={chat}>
+            <UserProvider value={user}>
             <BrowserRouter>
                 <TopNavigation />
                 <div style={{ marginTop: "95px" }}>
@@ -120,13 +125,14 @@ export default function App() {
                         <Route path="/" element={<Blog />} />
                     </Routes>
                 </div>
-                <ToastContainer className="p-3" position="bottom-end">
+                <ToastContainer className="p-3 position-fixed" position="bottom-end">
                     {toasts &&
                         toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
                     }
                 </ToastContainer>
                 <Bottom />
             </BrowserRouter>
+            </UserProvider>
         </ChatProvider>
     );
 }
