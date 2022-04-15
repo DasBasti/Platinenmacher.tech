@@ -3,9 +3,10 @@ import { useAsync } from "react-async";
 import { Container, Pagination, Spinner } from "react-bootstrap";
 import PCBListElement from '../components/PCBListElement';
 import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
+import { getToken, getUid } from "../helper/login";
 
 const loadPCBs = async (props:any) => 
-    await fetch("/pcb/api/list?page="+props.page+"&num="+props.num).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
+    await fetch("/pcb/api/list?page="+props.page+"&num="+props.num, {headers:{'User':getUid(), 'Bearer':getToken()}}).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
 
 export default function PCB() {
