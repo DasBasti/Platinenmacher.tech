@@ -1,24 +1,23 @@
-import { Async } from "react-async";
+import Async, { PromiseFn } from "react-async";
 import { Row, Col, Container, Card, Button, Spinner } from "react-bootstrap";
 
 
-type ProjectFeedProps = {
+export type ProjectFeedProps = {
     num: number;
 }
 
-const loadProjects = async () => /* URL mit Projekteinträgen aus dem Forum */
-    await fetch("https://kurzschluss-junkies.de/c/projekte/platinenmacher-stream/21.json",
-    ).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
-
-
 export default function ProjectFeed(props: ProjectFeedProps) {
 
+    const loadProjects: PromiseFn<any> = async () => /* URL mit Projekteinträgen aus dem Forum */
+        await fetch("https://kurzschluss-junkies.de/c/projekte/platinenmacher-stream/21.json",
+        ).then(res => (res.ok ? res : Promise.reject(res))).then(res => res.json())
 
-    return <Async promiseFn={loadProjects}>
-        <Async.Pending><Spinner animation="border" style={{alignContent:"center"}}/> Loading...</Async.Pending>
+    //@ts-ignore - Fix this!
+    return (<Async promiseFn={loadProjects}>
+        <Async.Pending><Spinner animation="border" style={{ alignContent: "center" }} /> Loading...</Async.Pending>
         <Async.Fulfilled>
             {(data: any) => {
-                const projects = data.topic_list?.topics?.slice(1, props.num+1);
+                const projects = data.topic_list?.topics?.slice(1, props.num + 1);
                 return <Container>
                     <Row>
                         {projects.map((topic: any, key: number) =>
@@ -37,5 +36,5 @@ export default function ProjectFeed(props: ProjectFeedProps) {
             }}
         </Async.Fulfilled>
         <Async.Rejected>{error => console.log(error)}</Async.Rejected>
-    </Async>
+    </Async>);
 } 
