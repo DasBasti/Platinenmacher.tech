@@ -51,9 +51,7 @@ const OAuthLogin = () => {
 const Logout = () => {
     const nav = useNavigate();
     useEffect(() => {
-
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("scope");
+        localStorage.clear();
         nav("/", { replace: true });
     }, [nav]);
     return (null);
@@ -62,7 +60,7 @@ const Logout = () => {
 export default function App() {
     const [chat, setChat] = useState<tmi.Client>();
     const [toasts, setToasts] = useState<Array<ChatToastProps>>([]);
-    const [user, setUser] = useState<UserContextT|undefined>(undefined)
+    const [user, setUser] = useState<UserContextT | undefined>(undefined)
 
     const hideToast = (ref: HTMLDivElement, key: number) => {
         ref.remove();
@@ -83,9 +81,9 @@ export default function App() {
         setChat(new tmi.client(opts));
     }, []);
 
-    useEffect(()=> {
-        setUser({username:getUsername()});
-    },[]);
+    useEffect(() => {
+        setUser({ username: getUsername() });
+    }, []);
 
     useEffect(() => {
 
@@ -110,29 +108,36 @@ export default function App() {
         chat?.connect();
     }, [chat]);
 
+    useEffect(() => {
+        const name = getUsername();
+        console.log(name)
+        if (name === "")
+            setToasts([{ username: "Twitch Privatsphäre", message: "Hier werden personenbezogene Daten nur verwendet, wenn ein Login über Twitch.tv durchgeführt wird. Wenn die Login with Twitch Funktionalität gestartet wird, werden Daten an Twitch.tv versendet.", datetime: "now", onTimeout: hideToast, autoHide: false }]);
+    }, [user]);
+
     return (
         <ChatProvider value={chat}>
             <UserProvider value={user}>
-            <BrowserRouter>
-                <TopNavigation />
-                <div style={{ marginTop: "95px" }}>
-                    <Routes>
-                        <Route path="/impressum" element={<Impressum />} />
-                        <Route path="/community" element={<PCB />} />
-                        <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
-                        <Route path="/logout" element={<Logout />} />
-                        <Route path="/panel" element={<Panel />} />
-                        <Route path="/projekte" element={<Projects/>} />
-                        <Route path="/" element={<Blog />} />
-                    </Routes>
-                </div>
-                <ToastContainer className="p-3 position-fixed" position="bottom-end">
-                    {toasts &&
-                        toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
-                    }
-                </ToastContainer>
-                <Bottom />
-            </BrowserRouter>
+                <BrowserRouter>
+                    <TopNavigation />
+                    <div style={{ marginTop: "95px" }}>
+                        <Routes>
+                            <Route path="/impressum" element={<Impressum />} />
+                            <Route path="/community" element={<PCB />} />
+                            <Route path="/login/twitch/authorized" element={<OAuthLogin />} />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/panel" element={<Panel />} />
+                            <Route path="/projekte" element={<Projects />} />
+                            <Route path="/" element={<Blog />} />
+                        </Routes>
+                    </div>
+                    <ToastContainer className="p-3 position-fixed" position="bottom-end">
+                        {toasts &&
+                            toasts.map((toast, key) => <ChatToast {...toast} id={key} key={key} />)
+                        }
+                    </ToastContainer>
+                    <Bottom />
+                </BrowserRouter>
             </UserProvider>
         </ChatProvider>
     );
