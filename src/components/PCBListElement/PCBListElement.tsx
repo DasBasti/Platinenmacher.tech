@@ -49,6 +49,7 @@ export default function PCBListElement(props: PCBListElementProps) {
     }
 
     const sendFav = (str: string) => {
+        setFavourite(!favourite);
         var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", "/pcb/api/fav/" + str); // false for synchronous request
             xmlHttp.setRequestHeader("Bearer", getToken());
