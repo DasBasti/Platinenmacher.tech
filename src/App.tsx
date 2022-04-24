@@ -110,7 +110,6 @@ export default function App() {
 
     useEffect(() => {
         const name = getUsername();
-        console.log(name)
         if (name === "")
             setToasts([{ username: "Twitch Privatsphäre", message: "Hier werden personenbezogene Daten nur verwendet, wenn ein Login über Twitch.tv durchgeführt wird. Wenn die Login with Twitch Funktionalität gestartet wird, werden Daten an Twitch.tv versendet.", datetime: "now", onTimeout: hideToast, autoHide: false }]);
     }, [user]);
