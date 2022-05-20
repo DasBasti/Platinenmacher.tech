@@ -48,7 +48,7 @@ export default function PCB() {
           next={reload_next}
           hasMore={true}
           loader={
-            <h4>
+            <h4 style={{textAlign:"center"}}>
               <Spinner animation="border" style={{ alignContent: "center" }} />{" "}
               laden...
             </h4>
