@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAsync } from "react-async";
-import { Container, Pagination, Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import PCBListElement from "../components/PCBListElement";
 import { PCBListElementProps } from "../components/PCBListElement/PCBListElement";
@@ -34,7 +33,9 @@ export default function PCB() {
       const new_list = arrayUnique([...full_list, ...data.entries]);
       if (new_list) updateFullList(new_list);
     });
-  }, [page]);
+  },
+  // eslint-disable-next-line
+  [page, num]);
 
   const reload_next = () => {
     setPage(page + 1);
