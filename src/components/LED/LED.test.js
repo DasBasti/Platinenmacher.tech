@@ -36,7 +36,7 @@ test('LED without owner with current last_seen', () => {
 
 test('LED without owner without date', () => {
     render(<LED id={2} owner={null} animation="test" color={16711680} last_seen="" highlight={false} />);
-    const element = screen.getByTitle(/zuletzt/);
+    const element = screen.getByTitle(/LED/);
     expect(element).toBeInTheDocument();
     expect(element).toHaveClass("led");
     expect(element).toHaveStyle("background-color: rgb(0,0,0);");
@@ -44,7 +44,7 @@ test('LED without owner without date', () => {
 
 test('LED without owner without color', () => {
     render(<LED id={2} owner={null} animation="test" color="" last_seen="" highlight={false} />);
-    const element = screen.getByTitle(/zuletzt/);
+    const element = screen.getByTitle(/LED/);
     expect(element).toBeInTheDocument();
     expect(element).toHaveClass("led");
     expect(element).toHaveStyle("background-color: rgb(0,0,0);");
