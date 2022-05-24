@@ -7253,10 +7253,10 @@ react-async@^10.0.1:
   resolved "https://registry.yarnpkg.com/react-async/-/react-async-10.0.1.tgz#575c083f808303d2f6ca52d11ec7554dbdbd9fcd"
   integrity sha512-ORUz5ca0B57QgBIzEZM5SuhJ6xFjkvEEs0gylLNlWf06vuVcLZsjIw3wx58jJkZG38p+0nUAxRgFW2b7mnVZzA==
 
-react-bootstrap-typeahead@^6.0.0-alpha.11:
-  version "6.0.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-typeahead/-/react-bootstrap-typeahead-6.0.0-alpha.11.tgz#6476df85256ad6dfe612913db753b52f3c70fef7"
-  integrity sha512-yHBPsdkAdvvLpkq6wWei55qt4REdbRnC+1wVxkBSBeTG4Z6lkKKSGx6w4kY9YmkyyVcbmmfwUSXhCWY/M+TzCg==
+react-bootstrap-typeahead@^6.0.0-alpha.12:
+  version "6.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-typeahead/-/react-bootstrap-typeahead-6.0.0-alpha.12.tgz#645349a82f55b1a2f718ee9a88eeb2a136cbedc7"
+  integrity sha512-8ad+tIqlJaSCChj2ZhQxMerPNqT7M/wI7w/OcPLyuBNAyYSxzcH9CaAZkFM1gzvsKhwc8txQh0g85sFusNe9sg==
   dependencies:
     "@babel/runtime" "^7.14.6"
     "@popperjs/core" "^2.10.2"
