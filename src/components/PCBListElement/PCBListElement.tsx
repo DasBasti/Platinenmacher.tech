@@ -25,6 +25,7 @@ export type PCBListElementProps = {
     fav?: boolean,
     hidden: boolean,
     animation: boolean,
+    onUsernameClick?: Function,
 }
 
 export default function PCBListElement(props: PCBListElementProps) {
@@ -70,7 +71,7 @@ export default function PCBListElement(props: PCBListElementProps) {
         <Row>
             <Col md={1} />
             <Col md={1}><UpDownVote upvotes={upvotes} voted={voted} /></Col>
-            <Col md={2}>{username}</Col>
+            <Col md={2}><div onClick={()=>{props.onUsernameClick && props.onUsernameClick(username)}}>{username}</div></Col>
             <Col md={4}>
                 <Row><Col><PCBImage code={str} onClick={() => { if (loggedin) sendChat(str, name); }} /></Col></Row>
                 <Row><Col>{name}</Col></Row></Col>
