@@ -40,15 +40,17 @@ export default function PCB() {
   const [full_list, updateFullList] = useState<any[]>([]);
   const [user_list, updateUserList] = useState<any[]>([]);
 
+  const updateListFromServer = () => {
+    loadPCBs({ page, num, user_name_filter }).then((data) => {
+      const new_list = arrayUnique([...full_list, ...data.entries]);
+      if (new_list) updateFullList(new_list);
+    });
+  };
+
   useEffect(
-    () => {
-      loadPCBs({ page, num, user_name_filter }).then((data) => {
-        const new_list = arrayUnique([...full_list, ...data.entries]);
-        if (new_list) updateFullList(new_list);
-      });
-    },
+    updateListFromServer,
     // eslint-disable-next-line
-    [page, num, user_name_filter]
+    [page, num]
   );
 
   useEffect(() => {
@@ -61,6 +63,13 @@ export default function PCB() {
     setPage(page + 1);
   };
 
+  const setFilter = (username: string) => {
+    setUsernameFilter(username);
+    setPage(0);
+    updateFullList([]);
+    updateListFromServer();
+  };
+
   return (
     <Container>
       <Container>
@@ -69,9 +78,8 @@ export default function PCB() {
             <Typeahead
               id="user_search_box"
               onChange={(selection) => {
-                if (selection.length) setUsernameFilter(selection[0] as string);
-                else setUsernameFilter("");
-                updateFullList([]);
+                if (selection.length) setFilter(selection[0] as string);
+                else setFilter("");
               }}
               options={user_list}
               selected={[user_name_filter]}
@@ -81,8 +89,7 @@ export default function PCB() {
             <Button
               variant="danger"
               onClick={() => {
-                setUsernameFilter("");
-                updateFullList([]);
+                setFilter("");
               }}
             >
               X
@@ -110,8 +117,7 @@ export default function PCB() {
               key={key}
               {...pcb}
               onUsernameClick={(username: string) => {
-                setUsernameFilter(username);
-                updateFullList([]);
+                setFilter(username);
               }}
             />
           ))}
