@@ -4,9 +4,10 @@ export type LEDProps = {
     color: number;
     id: number;
     owner: string;
-    animation: boolean;
+    animation: Boolean;
     last_seen?: string;
-    highlight?: boolean;
+    highlight?: Boolean;
+    realtime?: Boolean;
 }
 
 export default function LED(props: LEDProps) {
@@ -18,8 +19,9 @@ export default function LED(props: LEDProps) {
     const now = new Date().getTime();
     
     let seen = true;
-    
-    if (props.last_seen) {
+    let realtime = props.realtime? props.realtime: true;
+
+    if (realtime && props.last_seen) {
         const last_seen = new Date(props.last_seen).getTime();
         const time_diff = (now - last_seen) / 1000;
         seen = time_diff < 60 * 60 * 8;
