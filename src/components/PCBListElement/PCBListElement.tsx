@@ -63,7 +63,7 @@ export default function PCBListElement(props: PCBListElementProps) {
       let code = str;
       if (name) code = name;
 
-      if (code.indexOf("-")) {
+      if (code.indexOf("-") !== -1) {
         chat.say("Platinenmacher", "!pcba " + code.split("-")[0]);
       } else {
         chat.say("Platinenmacher", "!pcb " + code);
