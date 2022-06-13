@@ -24,7 +24,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export type PCBListElementProps = {
   upvotes: number;
-  voted: number;
+  voted: string;
   username: string;
   str: string;
   name: string;
@@ -51,6 +51,8 @@ export default function PCBListElement(props: PCBListElementProps) {
   } = props;
   const loggedin = isLoggedIn();
   const [favourite, setFavourite] = useState(fav);
+  const [Voted, setVoted] = useState(voted);
+  const [Upvotes, setUpvotes] = useState(upvotes);
   const chat = useContext(ChatContext);
   const user = useContext(UserContext);
 
@@ -89,11 +91,29 @@ export default function PCBListElement(props: PCBListElementProps) {
     xmlHttp.send(null);
   };
 
+  const UpDownVoteCb = (vote: string, pcb_str: string) => {
+    const old_voted = Voted;
+    setVoted(vote === "up" ? "True" : "False");
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "/pcb/api/"+vote+"/" + pcb_str); // false for synchronous request
+    xmlHttp.setRequestHeader("Bearer", getToken());
+    xmlHttp.setRequestHeader("User", getUid());
+    xmlHttp.onload = () => {
+      if (xmlHttp.status === 200) {
+        setUpvotes(parseInt(xmlHttp.responseText));
+      } else {
+        alert(xmlHttp.responseText);
+        setVoted(old_voted);
+      }
+    };
+    xmlHttp.send(null);
+  };
+
   return (
     <Row>
       <Col md={1} />
       <Col md={1}>
-        <UpDownVote upvotes={upvotes} voted={voted} />
+        <UpDownVote upvotes={Upvotes} voted={Voted} callbackfn={UpDownVoteCb} pcb_str={str}/>
       </Col>
       <Col md={2}>
         <div
