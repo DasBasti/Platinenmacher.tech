@@ -19,13 +19,14 @@ export default function LED(props: LEDProps) {
     const now = new Date().getTime();
     
     let seen = true;
-    let realtime = props.realtime? props.realtime: true;
-
-    if (realtime && props.last_seen) {
+    
+    if (props.last_seen) {
         const last_seen = new Date(props.last_seen).getTime();
         const time_diff = (now - last_seen) / 1000;
         seen = time_diff < 60 * 60 * 8;
     }
+    
+    seen = props.realtime ? seen: true;
     
     const title = props.last_seen ?
     `LED ${props.id}: ${props.owner}\nzuletzt gesehen: ${props.last_seen}`
