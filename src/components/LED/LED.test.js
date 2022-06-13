@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import LED from '.';
 
 test('LED with data but old last_seen', () => {
-    render(<LED id={2} owner="Tester" animation="test" color={16711680} last_seen="2022-03-09 21:55:59" highlight={false} />);
+    render(<LED id={2} owner="Tester" animation="test" color={16711680} last_seen="2022-03-09 21:55:59" highlight={false} realtime={true} />);
     const element = screen.getByTitle(/Tester/)
     expect(element).toBeInTheDocument();
     expect(element).toHaveClass("led");
