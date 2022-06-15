@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAsync } from "react-async";
 import LED from "../components/LED";
-import { LEDProps } from "../components/LED/LED";
+import { LEDProps, number_to_color } from "../components/LED/LED";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { debounce } from "lodash";
 import { getUsername } from "../helper/login";
 import { Button, ButtonGroup, Col } from "react-bootstrap";
+import ChatContext from "../context/chat";
 
 const loadLEDs = async () =>
   await fetch("/pcb/panel")
@@ -19,6 +20,8 @@ export default function Panel() {
   const [username, setUsername] = useState<string>("");
   const [color, setColor] = useState(0);
   const [realtime, setRealtime] = useState<Boolean>(true);
+
+  const chat = useContext(ChatContext);
 
   const search_for = debounce((search: string | undefined) => {
     if (!search) return;
@@ -87,6 +90,11 @@ export default function Panel() {
       rows.push(row);
     }
 
+    const updateLedColor= (color:string)=>{
+      setColor(parseInt(color.substring(1), 16));
+      chat?.say("Platinenmacher", "!led "+color);
+    }
+
     return (
       <div>
         <div style={{ position: "absolute", margin: 5, width: "250px" }}>
@@ -132,11 +140,12 @@ export default function Panel() {
                 </ul>
               </p>
               <div id="led" style={{ height: 50, width: 50, margin: 5 }}>
-                <LED
-                  animation={false}
-                  color={color}
-                  id={1025}
-                  owner={username}
+                <input 
+                  type={"color"} 
+                  value={number_to_color(color)}
+                  style={{ backgroundColor: number_to_color(color), border: "none" }}
+                  className={"led"}
+                  onChange={(e)=>{updateLedColor(e.target.value)}}
                 />
               </div>
               <p>
