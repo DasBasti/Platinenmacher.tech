@@ -10,11 +10,15 @@ export type LEDProps = {
     realtime?: Boolean;
 }
 
+export function number_to_color(color: number): string {
+    return "#" + color.toString(16).padStart(6, "0").slice(0, 6)
+}
+
 export default function LED(props: LEDProps) {
 
     let led_color = "#000000";
     if (props.owner && props.color) {
-        led_color = "#" + props.color.toString(16).padStart(6, "0").slice(0, 6)
+        led_color = number_to_color(props.color)
     }
     const now = new Date().getTime();
     
