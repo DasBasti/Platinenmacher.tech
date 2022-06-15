@@ -153,7 +153,7 @@ export default function Panel() {
               </p>
 
               <p>
-                Mit <strong>!led info</strong> oder <strong>!led status</strong>{" "}
+                Mit <strong onClick={()=>chat?.say("Platinenmacher", "!led info")}>!led info</strong> oder <strong  onClick={()=>chat?.say("Platinenmacher", "!led status")}>!led status</strong>{" "}
                 kannst du abfragen wo deine LED ist.
               </p>
 
@@ -162,19 +162,19 @@ export default function Panel() {
                 !led Kommando anhängen:
               </p>
               <ul>
-                <li>!led blink</li>
-                <li>!led rainbow</li>
-                <li>!led boom</li>
-                <li>!led fastbow</li>
-                <li>!led morse</li>
-                <li>!led identify</li>
-                <li>!led stop</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led blink")}>!led blink</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led rainbow")}>!led rainbow</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led boom")}>!led boom</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led fastbow")}>!led fastbow</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led morse Ich benutze platinemacher.tech. Und du solltest das auch tun.")}>!led morse</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led identify")}>!led identify</li>
+                <li onClick={()=>chat?.say("Platinenmacher", "!led stop")}>!led stop</li>
               </ul>
               <p>
-                DISCOMODE kann mit <strong>!led disco</strong> aktiviert werden.
+                DISCOMODE kann mit <strong  onClick={()=>chat?.say("Platinenmacher", "!led disco")}>!led disco</strong> aktiviert werden.
               </p>
               <p>
-                Eine Runde Game of Life kannst du mit <strong>!led gol</strong>{" "}
+                Eine Runde Game of Life kannst du mit <strong onClick={()=>chat?.say("Platinenmacher", "!led gol")}>!led gol</strong>{" "}
                 starten
               </p>
             </div>
