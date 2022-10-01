@@ -93,6 +93,7 @@ export default function Panel() {
     const updateLedColor= (color:string)=>{
       setColor(parseInt(color.substring(1), 16));
       chat?.say("Platinenmacher", "!led "+color);
+      run(loadLEDs);
     }
 
     return (
