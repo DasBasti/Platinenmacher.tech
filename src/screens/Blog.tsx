@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitch, faYoutube, faWordpress, faGithub, faDiscourse, faMastodon} from '@fortawesome/free-brands-svg-icons';
+import { faTwitch, faYoutube, faWordpress, faGithub, faMastodon} from '@fortawesome/free-brands-svg-icons';
 import { faPodcast } from "@fortawesome/free-solid-svg-icons";
 
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
