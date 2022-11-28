@@ -38,7 +38,6 @@ export default function Blog() {
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://www.twitch.tv/platinenmacher"><FontAwesomeIcon icon={faTwitch as IconProp} /> Twitch</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://kurzschluss-blog.de/"><FontAwesomeIcon icon={faWordpress as IconProp} /> Blog</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="http://kurzschlussjunkies.de/"><FontAwesomeIcon icon={faPodcast as IconProp} /> Podcast</a></ListGroup.Item>
-                    <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://kurzschluss-junkies.de/"><FontAwesomeIcon icon={faDiscourse as IconProp} /> Forum</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://github.com/DasBasti"><FontAwesomeIcon icon={faGithub as IconProp} /> GitHub</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://www.youtube.com/channel/UCPyRzwxnI9-pL5-50JkxY5Q"><FontAwesomeIcon icon={faYoutube as IconProp} /> Youtube</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" rel="me" href="https://kurzschluss.group/@platinenmacher"><FontAwesomeIcon icon={faMastodon as IconProp} /> Mastodon</a></ListGroup.Item>
@@ -50,7 +49,6 @@ export default function Blog() {
         <Row><Col><h2>Projekte</h2></Col></Row>
     </Container>
     <ProjectFeed num={3}/>
-    <Container><a className="linkListLinks" href="https://kurzschluss-junkies.de">Kurzschluss Junkies Forum</a></Container>
     </>
     );
 }
