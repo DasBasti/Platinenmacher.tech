@@ -11,7 +11,7 @@ export default function ProjectFeed(props: ProjectFeedProps) {
   const loadProjects: PromiseFn<any> = async () => {
     /* URL mit Projekteinträgen aus dem Forum */
     const result = await fetch(
-      "https://kurzschluss.group/tags/Projekte.rss"
+      "https://kurzschluss.group/users/platinenmacher.rss"
     ).then((res) => (res.ok ? res : Promise.reject(res)));
     const body = await result.text();
     const feed = new window.DOMParser().parseFromString(body, "text/xml");
