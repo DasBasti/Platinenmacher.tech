@@ -11,33 +11,28 @@ export default function ProjectFeed(props: ProjectFeedProps) {
   const loadProjects: PromiseFn<any> = async () => {
     /* URL mit Projekteinträgen aus dem Forum */
     const result = await fetch(
-      "https://kurzschluss.group/users/platinenmacher.rss"
+      "https://kurzschluss-blog.de/category/allgemein/projekte/feed/"
     ).then((res) => (res.ok ? res : Promise.reject(res)));
     const body = await result.text();
     const feed = new window.DOMParser().parseFromString(body, "text/xml");
         console.log(feed.body);
     const items = feed.querySelectorAll("item");
     const feedItems = [...items].map((el) => {
-      let found = false;
-      el.querySelectorAll("category").forEach((category:any) => {
-        if (category.textContent === "Projekte") {
-          found = true;
-        }
-      });
+      var image;
+      const content_element = el.getElementsByTagName("content:encoded")[0];
+      if(content_element){
+        const content = new window.DOMParser().parseFromString(content_element.textContent || "", "text/html");
+        image = content.querySelector("img")?.src
+      }
       return {
         link: el.querySelector("link")?.innerHTML,
-        title: truncate(el.querySelector("description")?.textContent?.replace(/<\/?[^>]+(>|$)/g, " ")),
-        image_url: el.querySelector("content")?.attributes.getNamedItem("url")?.value,
-        found: found,
+        title: truncate(el.querySelector("title")?.innerHTML),
+        image_url: image,
       };
     });
 
-    const filteredFeed = feedItems.filter((item)=>{
-        return (item.found === true);
-    })
-
-    console.log(filteredFeed);
-    return filteredFeed.slice(0, props.num);
+    console.log(feedItems);
+    return feedItems.slice(0, props.num);
   };
 
   return (
