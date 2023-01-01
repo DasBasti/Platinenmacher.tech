@@ -19,15 +19,18 @@ export default function ProjectFeed(props: ProjectFeedProps) {
     const items = feed.querySelectorAll("item");
     const feedItems = [...items].map((el) => {
       var image;
+      var body_text;
       const content_element = el.getElementsByTagName("content:encoded")[0];
       if(content_element){
         const content = new window.DOMParser().parseFromString(content_element.textContent || "", "text/html");
         image = content.querySelector("img")?.src
+        body_text = content.querySelector("p")?.innerText
       }
       return {
         link: el.querySelector("link")?.innerHTML,
         title: truncate(el.querySelector("title")?.innerHTML),
         image_url: image,
+        body: body_text,
       };
     });
 
@@ -60,6 +63,9 @@ export default function ProjectFeed(props: ProjectFeedProps) {
                     </a>
                     <Card.Body>
                       <Card.Title >{topic.title}</Card.Title>
+                      <p>
+                      {topic.body}
+                      </p>
                       <Button
                         variant="primary"
                         href={topic.link}
