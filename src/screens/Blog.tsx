@@ -40,7 +40,7 @@ export default function Blog() {
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="http://kurzschlussjunkies.de/"><FontAwesomeIcon icon={faPodcast as IconProp} /> Podcast</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://github.com/DasBasti"><FontAwesomeIcon icon={faGithub as IconProp} /> GitHub</a></ListGroup.Item>
                     <ListGroup.Item style={{border:0}}><a className="linkListLinks" href="https://www.youtube.com/channel/UCPyRzwxnI9-pL5-50JkxY5Q"><FontAwesomeIcon icon={faYoutube as IconProp} /> Youtube</a></ListGroup.Item>
-                    <ListGroup.Item style={{border:0}}><a className="linkListLinks" rel="me" href="https://kurzschluss.group/@platinenmacher"><FontAwesomeIcon icon={faMastodon as IconProp} /> Mastodon</a></ListGroup.Item>
+                    <ListGroup.Item style={{border:0}}><a className="linkListLinks" rel="me" href="https://troet.cafe/@platinenmacher"><FontAwesomeIcon icon={faMastodon as IconProp} /> Mastodon</a></ListGroup.Item>
                 </ListGroup>
             </Col>
         </Row>
