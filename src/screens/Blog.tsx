@@ -19,16 +19,24 @@ export default function Blog() {
                 <h2>Neuigkeiten</h2>
                 <hr />
                 <p>
-                    Aktuell entsteht gerade das PCB Projekt. Das Platinenmacher Community Board.
-                </p><p style={{ textAlign: 'center' }}>
+                    Ich befinde mich zur Zeit in einer Phase in der ich neben dem Job ein Fernstudium absolviere. Deshalb habe ich den Streaming Kanal pausiert.
+                    Sobald ich mein Master in der Tasche habe sehen wir uns wieder regelmäßig. 👀
+                </p>
+                <h2>Comminuty Board</h2>
+                <p style={{ textAlign: 'center' }}>
                     <img src={process.env.PUBLIC_URL + "/img/pcb.png"} alt="PCB Simulator Bild mit Lötkolbensymbol" /><br />
-                    <Link to="community">Hier geht es zur Projektseite</Link>
+                    <Link to="community">Hier geht es zur Community Board Projektseite</Link>
                 </p><p>
                     Auf der Seite sind die Bilder gelistet, die schon einmal im Chat gesehen wurden. Die Bilder können mit einfachem Klick in eurem Namen beim Platinenmacher im Chat gepostet werden. Dazu ist ein OAuth Login über Twitch notwendig. Dabei werden weder euer Passwort noch eure Email Adresse an platinenmacher.tech übertragen.
-                </p><p>
+                </p><p style={{ textAlign: 'center' }}>
                     <Button href="https://www.twitch.tv/platinenmacher" style={{marginRight:"var(--bs-gutter-x)"}}>Platinenmacher »</Button>
                 
                     <Button href="https://www.twitch.tv/thebrutzler">TheBrutzler »</Button>
+                </p>
+                <h2>India Navi</h2>
+                <p>
+                    Der Brutzler hat dem India Navi einen neuen ESP32 verpasst. Der kommt jetzt mit 8MB RAM. 8 MegaByte! Da können wir jede Menge Sachen dazuerfinden.
+                    Ab und zu gibt es Updates. Dazu könnt ihr gerne das <a href="https://github.com/DasBasti/IndiaNavi_Firmware">GitHub</a> Projekt folgen.
                 </p>
             </Col>
             <Col md={4}>
@@ -46,7 +54,7 @@ export default function Blog() {
         </Row>
     </Container>
     <Container>
-        <Row><Col><h2>Projekte</h2></Col></Row>
+        <Row><Col><h2>Neusten Projekt Posts</h2></Col></Row>
     </Container>
     <ProjectFeed num={3}/>
     </>
