@@ -17,7 +17,7 @@
     "@types/node": "^18.8.4",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.3",
-    "@types/tmi.js": "^1.8.1",
+    "@types/tmi.js": "^1.8.3",
     "bootstrap": "^5.2.3",
     "canvas": "^2.11.2",
     "lodash": "^4.17.21",
