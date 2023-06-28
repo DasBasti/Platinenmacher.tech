@@ -30,7 +30,7 @@
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.0",
     "tmi.js": "^1.8.5",
-    "typescript": "^5.0.4",
+    "typescript": "^5.1.5",
     "web-vitals": "^3.3.2"
   },
   "scripts": {
