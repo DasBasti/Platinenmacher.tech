@@ -17,6 +17,7 @@ export default function Navigation() {
                         <Nav.Link href="/projekte">Projekte</Nav.Link>
                         <Nav.Link href="/community">Community Board</Nav.Link>
                         <Nav.Link href="/panel">LED Matrix</Nav.Link>
+                        <Nav.Link href="/navi">India Navi</Nav.Link>
                     </Nav>
                     <Nav className="me-auto">
                         <Nav.Link href="https://www.twitch.tv/platinenmacher"><FontAwesomeIcon icon={faTwitch as IconProp} />Twitch</Nav.Link>

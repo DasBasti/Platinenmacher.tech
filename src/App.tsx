@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-bootstrap';
 import { ChatToastProps } from './components/ChatToast/ChatToast';
 import ChatToast from './components/ChatToast';
 import Projects from './screens/Projects';
+import IndiaNavi from './screens/IndiaNavi';
 import { UserContextT, UserProvider } from './context/user';
 
 /* TODO: refactor */
@@ -127,6 +128,7 @@ export default function App() {
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/panel" element={<Panel />} />
                             <Route path="/projekte" element={<Projects />} />
+                            <Route path="/navi" element={<IndiaNavi />} />
                             <Route path="/" element={<Blog />} />
                         </Routes>
                     </div>
