@@ -22,7 +22,7 @@ export default function Blog() {
                     Ich befinde mich zur Zeit in einer Phase in der ich neben dem Job ein Fernstudium absolviere. Deshalb habe ich den Streaming Kanal pausiert.
                     Sobald ich mein Master in der Tasche habe sehen wir uns wieder regelmäßig. 👀
                 </p>
-                <h2>Comminuty Board</h2>
+                <h2>Community Board</h2>
                 <p style={{ textAlign: 'center' }}>
                     <img src={process.env.PUBLIC_URL + "/img/pcb.png"} alt="PCB Simulator Bild mit Lötkolbensymbol" /><br />
                     <Link to="community">Hier geht es zur Community Board Projektseite</Link>
