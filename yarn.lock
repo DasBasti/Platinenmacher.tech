@@ -2313,10 +2313,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
-"@types/tmi.js@^1.8.3":
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/@types/tmi.js/-/tmi.js-1.8.3.tgz#db81ad42f7f71dce0aa9dfa5f14bf7c49af4cad2"
-  integrity sha512-piKPU1DF+Lxnh9BV0gVpbJIMnKOQT6zT0o6NLE0DZgHNW7fGxReRRSp987+Ph1aYiyNWXXbxAeQAovTlEYC1hw==
+"@types/tmi.js@^1.8.5":
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/@types/tmi.js/-/tmi.js-1.8.5.tgz#f8d262f12ad502087d561a22016c365391516882"
+  integrity sha512-SsiWBX37j1Vx7ihIimDVgHF+PvY5D8DdFZs2UY07YXJZ4/qbZ5HTYYNjGszAafMbKW3shg/Ek2YTU74CKDeG+w==
 
 "@types/trusted-types@^2.0.2":
   version "2.0.3"
