@@ -15,7 +15,6 @@ export default function ProjectFeed(props: ProjectFeedProps) {
     ).then((res) => (res.ok ? res : Promise.reject(res)));
     const body = await result.text();
     const feed = new window.DOMParser().parseFromString(body, "text/xml");
-        console.log(feed.body);
     const items = feed.querySelectorAll("item");
     const feedItems = [...items].map((el) => {
       var image;
@@ -34,7 +33,6 @@ export default function ProjectFeed(props: ProjectFeedProps) {
       };
     });
 
-    console.log(feedItems);
     return feedItems.slice(0, props.num);
   };
 

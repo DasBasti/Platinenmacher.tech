@@ -91,7 +91,6 @@ export default function App() {
         // Called every time a message comes in
         function onMessageHandler(target: any, context: any, msg: any, self: any) {
             //if (self) { return; } // Ignore messages from the bot
-            console.log(context);
             let datetime = ""
             if (context["tmi-sent-ts"])
                 datetime = new Date(context["tmi-sent-ts"] * 1000).toLocaleDateString("de-DE")
