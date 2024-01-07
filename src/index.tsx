@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import reportWebVitals, { sendToAnalytics } from './reportWebVitals';
+//import reportWebVitals, { sendToAnalytics } from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App'
