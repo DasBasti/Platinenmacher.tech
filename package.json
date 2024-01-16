@@ -1,6 +1,6 @@
 {
   "name": "page",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
@@ -19,22 +19,22 @@
     "react-dom": "^17.0.2",
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^6.14.1",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^5.0.0",
     "tmi.js": "^1.8.5",
     "web-vitals": "^3.4.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.4",
-    "@testing-library/jest-dom": "^6.1.2",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
+    "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.2",
-    "@types/lodash": "^4.14.195",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.5.0",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.3",
-    "@types/tmi.js": "^1.8.3",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0"
+    "@types/tmi.js": "^1.8.6",
+    "typescript": "^5.0.4"
   },
   "scripts": {
     "start": "REACT_APP_REDIRECT_URI=\"http://localhost:3000\" REACT_APP_BUILD_TIME=debug react-scripts start",
