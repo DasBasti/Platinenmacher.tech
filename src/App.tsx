@@ -87,7 +87,8 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-
+        if (getUsername() === "")
+            return;
         // Called every time a message comes in
         function onMessageHandler(target: any, context: any, msg: any, self: any) {
             //if (self) { return; } // Ignore messages from the bot
