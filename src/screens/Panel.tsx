@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAsync } from "react-async";
 import LED from "../components/LED";
 import { LEDProps, number_to_color } from "../components/LED/LED";
@@ -64,7 +64,7 @@ export default function Panel() {
     let rows = [];
 
     for (let x = 0; x < 32; x++) {
-      let row: Array<JSX.Element> = [];
+      let row: Array<React.JSX.Element> = [];
       for (let y = 0; y < 32; y++) {
         const offset = x * 32 + y;
         if (panel_data[offset]) {
@@ -184,7 +184,7 @@ export default function Panel() {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <table className="led-table">
             <tbody>
-              {rows.map((row: Array<JSX.Element>, key: number) => (
+              {rows.map((row: Array<React.JSX.Element>, key: number) => (
                 <tr key={key}>{row.map((led) => led)}</tr>
               ))}
             </tbody>
