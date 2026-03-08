@@ -20,6 +20,20 @@ export default function Blog() {
                 <p>
                     Ich bin wieder aktiv am Streamen! 👋
                 </p>
+                <p>
+                    Nach einer intensiven Zeit mit Fernstudium und Masterarbeit bin ich endlich wieder zurück auf Twitch. 
+                    Es gab viel zu tun, aber jetzt ist wieder Zeit für das, was mir am meisten Spaß macht:
+                    Elektronik-Projekte, Lots, Firmwares und vieles mehr.
+                </p>
+                <p style={{ textAlign: 'center' }}>
+                    <a href="https://www.twitch.tv/platinenmacher" className="btn btn-primary" style={{marginRight:"var(--bs-gutter-x)"}}>
+                        📺 Jetzt auf Twitch ansehen
+                    </a>
+                </p>
+                <p>
+                    Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. 
+                    Bleibt gespannt auf neue Projekte und Updates!
+                </p>
             </Col>
             <Col md={4}>
                 <h2>Links</h2>
