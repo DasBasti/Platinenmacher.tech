@@ -1,7 +1,5 @@
 {
   "buildCommand": "yarn build",
   "outputDirectory": "build",
-  "installCommand": "yarn install",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "installCommand": "yarn install"
 }

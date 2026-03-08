@@ -28,10 +28,11 @@ const OAuthLogin = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const token_type = new URLSearchParams(location.hash).get("token_type")
+        const params = new URLSearchParams(location.search);
+        const token_type = params.get("token_type")
         if (token_type === "bearer") {
-            const scope = new URLSearchParams(location.hash).get("scope")
-            const access_token = new URLSearchParams(location.hash).get("#access_token")
+            const scope = params.get("scope")
+            const access_token = params.get("access_token")
             if (access_token) localStorage.setItem("access_token", access_token);
             if (scope) localStorage.setItem("scope", scope);
 
@@ -45,7 +46,7 @@ const OAuthLogin = () => {
 
             nav("/", { replace: true });
         }
-    }, [nav, location.hash])
+    }, [nav, location.search])
     return (null)
 }
 
