@@ -18,8 +18,7 @@ export default function Blog() {
                 <h2>Neuigkeiten</h2>
                 <hr />
                 <p>
-                    Ich befinde mich zur Zeit in einer Phase in der ich neben dem Job ein Fernstudium absolviere. Deshalb habe ich den Streaming Kanal pausiert.
-                    Sobald ich mein Master in der Tasche habe sehen wir uns wieder regelmäßig. 👀
+                    Ich bin wieder aktiv am Streamen! 👋
                 </p>
             </Col>
             <Col md={4}>
