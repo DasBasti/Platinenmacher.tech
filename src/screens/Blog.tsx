@@ -23,7 +23,7 @@ export default function Blog() {
                 <p>
                     Nach einer intensiven Zeit mit Fernstudium und Masterarbeit bin ich endlich wieder zurück auf Twitch. 
                     Es gab viel zu tun, aber jetzt ist wieder Zeit für das, was mir am meisten Spaß macht:
-                    Elektronik-Projekte, Lots, Firmwares und vieles mehr.
+                    AI, Software, Löten, Firmwares und vieles mehr.
                 </p>
                 <p style={{ textAlign: 'center' }}>
                     <a href="https://www.twitch.tv/platinenmacher" className="btn btn-primary" style={{marginRight:"var(--bs-gutter-x)"}}>
@@ -31,7 +31,7 @@ export default function Blog() {
                     </a>
                 </p>
                 <p>
-                    Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. 
+                    Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. Montags und Mittwochs gegen 19:30 Uhr
                     Bleibt gespannt auf neue Projekte und Updates!
                 </p>
             </Col>
