@@ -1,0 +1,282 @@
+/* WanderNavi page: follows the look of wandernavi.app and the device itself. Only the 7 colors of the ACeP
+   display, flat surfaces, black outlines, square corners and hard shadows. Scoped to .wandernavi so the rest
+   of the site keeps its own style. */
+.wandernavi {
+  --wn-ink: #000000;
+  --wn-paper: #ffffff;
+  --wn-green: #00ff00;
+  --wn-blue: #0000ff;
+  --wn-red: #ff0000;
+  --wn-yellow: #ffff32;
+  --wn-orange: #ff7f00;
+  --wn-tint: #f4f4ef;
+  --wn-border: 2px;
+  --wn-shadow: 4px;
+  --wn-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+
+  color: var(--wn-ink);
+  font-size: 17px;
+  line-height: 1.55;
+  padding-bottom: 32px;
+}
+
+.wandernavi a:not(.btn) {
+  color: var(--wn-blue);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  overflow-wrap: anywhere;
+}
+.wandernavi a:not(.btn):hover { background: var(--wn-yellow); color: var(--wn-ink); }
+
+.wandernavi :focus-visible { outline: 3px solid var(--wn-blue); outline-offset: 3px; }
+
+.wandernavi h2,
+.wandernavi h3,
+.wandernavi h4 { font-family: var(--wn-mono); font-weight: 700; line-height: 1.2; }
+
+.wandernavi code {
+  font-family: var(--wn-mono);
+  font-size: 0.88em;
+  color: var(--wn-ink);
+  padding: 0 4px;
+  border: 1.5px solid var(--wn-ink);
+  background: var(--wn-paper);
+}
+
+/* Buttons move into their shadow when pressed, like in the app */
+.wandernavi .wn-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 6px 18px;
+  border: var(--wn-border) solid var(--wn-ink) !important;
+  border-radius: 0;
+  box-shadow: var(--wn-shadow) var(--wn-shadow) 0 var(--wn-ink);
+  font-family: var(--wn-mono);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: var(--wn-ink);
+  background: var(--wn-paper);
+  transition: transform 60ms, box-shadow 60ms;
+}
+.wandernavi .wn-button:hover,
+.wandernavi .wn-button:focus-visible { background: var(--wn-yellow); color: var(--wn-ink); }
+.wandernavi .wn-button:active { transform: translate(var(--wn-shadow), var(--wn-shadow)); box-shadow: none; }
+.wandernavi .wn-button.wn-green { background: var(--wn-green); }
+.wandernavi .wn-button.wn-orange { background: var(--wn-orange); }
+.wandernavi .wn-button.wn-green:hover,
+.wandernavi .wn-button.wn-orange:hover { background: var(--wn-yellow); }
+
+/* Hero */
+.wandernavi .wn-hero {
+  background: var(--wn-green);
+  border: var(--wn-border) solid var(--wn-ink);
+  box-shadow: 8px 8px 0 var(--wn-ink);
+  padding: 40px 32px;
+  margin: 8px 8px 48px 0;
+}
+.wandernavi .wn-kicker {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 2px 10px;
+  background: var(--wn-paper);
+  border: var(--wn-border) solid var(--wn-ink);
+  font-family: var(--wn-mono);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.wandernavi .wn-title {
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.wandernavi .wn-subtitle {
+  font-family: var(--wn-mono);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.wandernavi .wn-lead { font-size: 19px; max-width: 34em; margin-bottom: 0; }
+.wandernavi .wn-hero-image {
+  display: block;
+  width: 100%;
+  border: var(--wn-border) solid var(--wn-ink);
+  box-shadow: var(--wn-shadow) var(--wn-shadow) 0 var(--wn-ink);
+  background: var(--wn-paper);
+}
+
+/* Call to action */
+.wandernavi .wn-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  background: var(--wn-yellow);
+  border: var(--wn-border) solid var(--wn-ink);
+  padding: 24px 28px;
+  margin-bottom: 56px;
+}
+.wandernavi .wn-cta h3 { font-size: 22px; text-transform: uppercase; margin-bottom: 6px; }
+.wandernavi .wn-cta p { margin: 0; max-width: 38em; }
+
+/* Sections */
+.wandernavi .wn-section { margin-bottom: 56px; }
+.wandernavi .wn-section.wn-tinted {
+  background: var(--wn-tint);
+  border: var(--wn-border) solid var(--wn-ink);
+  padding: 32px 28px;
+}
+.wandernavi .wn-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(22px, 3.2vw, 28px);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 18px;
+}
+.wandernavi .wn-section-title::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 28px;
+  background: var(--wn-orange);
+  border: var(--wn-border) solid var(--wn-ink);
+}
+.wandernavi .wn-section-lead { max-width: 44em; font-size: 18px; margin-bottom: 28px; }
+
+/* Cards */
+.wandernavi .card {
+  height: 100%;
+  border: var(--wn-border) solid var(--wn-ink);
+  border-radius: 0;
+  background: var(--wn-paper);
+  transition: box-shadow 60ms;
+}
+.wandernavi .wn-features .card:hover { box-shadow: var(--wn-shadow) var(--wn-shadow) 0 var(--wn-ink); }
+.wandernavi .card-title { font-family: var(--wn-mono); font-size: 15px; font-weight: 700; text-transform: uppercase; }
+.wandernavi .card-text { font-size: 15.5px; }
+
+/* Palette: left half the pure firmware color, right half how the panel shows it */
+.wandernavi .wn-palette { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.wandernavi .wn-palette li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--wn-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wandernavi .wn-palette b { width: 1.2em; text-align: right; opacity: 0.55; }
+.wandernavi .wn-swatch {
+  flex: none;
+  width: 120px;
+  height: 32px;
+  border: var(--wn-border) solid var(--wn-ink);
+  background: linear-gradient(90deg, var(--pure) 50%, var(--panel) 50%);
+}
+.wandernavi .wn-note { font-size: 14px; opacity: 0.75; }
+
+/* Steps */
+.wandernavi .wn-steps { list-style: none; padding: 0; margin: 0; }
+.wandernavi .wn-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 14px;
+  background: var(--wn-ink);
+  color: var(--wn-green);
+  font-family: var(--wn-mono);
+  font-weight: 700;
+  font-size: 24px;
+}
+.wandernavi .wn-steps h4 { font-size: 16px; text-transform: uppercase; }
+.wandernavi .wn-steps p { font-size: 15.5px; margin: 0; }
+
+/* App */
+.wandernavi .wn-checklist { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 8px; }
+.wandernavi .wn-checklist li { display: flex; align-items: flex-start; gap: 12px; }
+.wandernavi .wn-checklist li::before {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  background: var(--wn-green);
+  border: var(--wn-border) solid var(--wn-ink);
+}
+
+/* Specs */
+.wandernavi .wn-specs { border: var(--wn-border) solid var(--wn-ink); margin: 0; }
+.wandernavi .wn-specs > :not(caption) > * > * {
+  padding: 12px 16px;
+  border-color: var(--wn-ink);
+  border-width: 0 0 1px;
+  background: var(--wn-paper);
+  box-shadow: none;
+}
+.wandernavi .wn-specs th {
+  width: 30%;
+  font-family: var(--wn-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  border-right: var(--wn-border) solid var(--wn-ink) !important;
+  background: var(--wn-yellow) !important;
+}
+.wandernavi .wn-specs tr:last-child > * { border-bottom: 0; }
+
+/* Repositories */
+.wandernavi .wn-repo {
+  box-shadow: var(--wn-shadow) var(--wn-shadow) 0 var(--wn-ink);
+}
+.wandernavi .wn-repo .card-body { display: flex; flex-direction: column; align-items: flex-start; }
+.wandernavi .wn-repo .card-text { flex: 1; }
+.wandernavi .wn-repo .card-title { text-transform: none; overflow-wrap: anywhere; }
+.wandernavi .wn-repo a { font-family: var(--wn-mono); font-size: 13px; }
+.wandernavi .wn-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 1px 8px;
+  border: 1.5px solid var(--wn-ink);
+  font-family: var(--wn-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wandernavi .wn-badge.wn-green { background: var(--wn-green); }
+.wandernavi .wn-badge.wn-orange { background: var(--wn-orange); }
+.wandernavi .wn-badge.wn-yellow { background: var(--wn-yellow); }
+
+/* Dithered divider, two display colors mixed like in the map tiles */
+.wandernavi .wn-dither {
+  height: 16px;
+  margin-bottom: 32px;
+  border: var(--wn-border) solid var(--wn-ink);
+  background-color: var(--wn-paper);
+  background-image:
+    linear-gradient(45deg, var(--wn-ink) 25%, transparent 25%, transparent 75%, var(--wn-ink) 75%),
+    linear-gradient(45deg, var(--wn-ink) 25%, transparent 25%, transparent 75%, var(--wn-ink) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+.wandernavi .wn-footer { font-size: 14px; }
+
+@media (max-width: 600px) {
+  .wandernavi { font-size: 16px; }
+  .wandernavi .wn-hero { padding: 28px 18px; }
+  .wandernavi .wn-lead { font-size: 17px; }
+  .wandernavi .wn-cta, .wandernavi .wn-section.wn-tinted { padding: 22px 18px; }
+  .wandernavi .wn-specs th { width: 38%; }
+  .wandernavi .wn-specs > :not(caption) > * > * { padding: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wandernavi .wn-button, .wandernavi .card { transition: none; }
+}
