@@ -1,4 +1,6 @@
-import { Button, Card, Col, Container, ListGroup, Row, Table } from "react-bootstrap";
+import { CSSProperties } from "react";
+import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
+import "./IndiaNavi.css";
 
 const WANDERNAVI_URL = "https://wandernavi.app/";
 
@@ -44,14 +46,23 @@ const steps = [
     ["Losgehen", "Einschalten und das Handy wegstecken. Das Navi findet seine Position und aktualisiert die Karte jede Minute."],
 ];
 
+// Pure color as used by the firmware, and how it looks on the panel (values from wandernavi.app)
 const colors: [number, string, string, string][] = [
-    [0, "Schwarz", "#000000", "light"],
-    [1, "Weiß", "#ffffff", "dark"],
-    [2, "Grün", "#2e8b3d", "light"],
-    [3, "Blau", "#2a4ba8", "light"],
-    [4, "Rot", "#c8281e", "light"],
-    [5, "Gelb", "#f0d318", "dark"],
-    [6, "Orange", "#e87a1c", "dark"],
+    [0, "Schwarz", "#000000", "#393039"],
+    [1, "Weiß", "#ffffff", "#ffffff"],
+    [2, "Grün", "#00ff00", "#3a5b46"],
+    [3, "Blau", "#0000ff", "#3d3b5e"],
+    [4, "Rot", "#ff0000", "#9c484b"],
+    [5, "Gelb", "#ffff32", "#d0be47"],
+    [6, "Orange", "#ff7f00", "#b16a49"],
+];
+
+const appFeatures = [
+    "Track-Bibliothek: GPX-Dateien aus beliebigen Apps öffnen und den passenden senden",
+    "Karte mit Suche nach Orten und Koordinaten",
+    "Farbfilter mit Live-Vorschau, wie Kartenfarben zu Display-Farben werden",
+    "Übertragung über das WLAN des Geräts oder dein Heimnetz",
+    "Bluetooth: Kopplung, Zeit und Position, Display-Einstellungen, Firmware-Updates",
 ];
 
 const hardware = [
@@ -64,190 +75,227 @@ const hardware = [
     ["Firmware", "C auf ESP-IDF via PlatformIO, OTA-Updates mit automatischem Rollback"],
 ];
 
+const repos = [
+    {
+        title: "IndiaNavi_Firmware",
+        badge: ["MIT", "wn-green"],
+        text: "Firmware für den ESP32-S3: Display, GNSS, Karte, Bluetooth, WLAN-Upload-API. Rendert den Kartenbildschirm auch am PC.",
+        url: "https://github.com/DasBasti/IndiaNavi_Firmware",
+        label: "github.com/DasBasti/IndiaNavi_Firmware",
+    },
+    {
+        title: "IndiaNavi_App",
+        badge: ["Android", "wn-orange"],
+        text: "Die WanderNavi-Begleit-App für Android, gebaut mit React Native und Expo.",
+        url: "https://github.com/DasBasti/IndiaNavi_App",
+        label: "github.com/DasBasti/IndiaNavi_App",
+    },
+    {
+        title: "IndiaNavi_Converter",
+        badge: ["Karten", "wn-yellow"],
+        text: "Konverter, der Kartenkacheln für das Gerät erzeugt.",
+        url: "https://github.com/DasBasti/IndiaNavi_Converter/tree/rust/rust",
+        label: "github.com/DasBasti/IndiaNavi_Converter",
+    },
+];
+
 export default function IndiaNavi() {
     return (
-        <Container>
-            <h2>WanderNavi (IndiaNavi)</h2>
-            <p>
-                <img
-                    src={process.env.PUBLIC_URL + "/img/navi_background.png"}
-                    alt="WanderNavi ePaper-Wandernavigationsgerät"
-                    className="img-fluid"
-                />
-            </p>
-            <p className="lead">
-                WanderNavi ist ein kleiner, quelloffener Offline-Wandernavigator mit einem
-                7-farbigen ePaper-Display. Er gibt keine Abbiegehinweise, sondern zeigt, wo du
-                bist, auf einer echten Karte neben dem Track, den du laufen willst. Ohne Netz,
-                ohne Abo, ohne Cloud: Die Karten liegen auf der SD-Karte und das Display bleibt
-                auch in der prallen Sonne lesbar.
-            </p>
-
-            <Card className="my-4 text-center border-primary">
-                <Card.Body>
-                    <Card.Title as="h3">Mehr erfahren auf wandernavi.app</Card.Title>
-                    <Card.Text>
-                        Alle Infos zu Gerät, Funktionsweise, Android-App und Quellcode findest du
-                        auf der Projektseite.
-                    </Card.Text>
-                    <Button
-                        variant="primary"
-                        size="lg"
-                        href={WANDERNAVI_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Zu wandernavi.app
-                    </Button>
-                </Card.Body>
-            </Card>
-
-            <h3>Das Gerät</h3>
-            <p>
-                Gebaut zum Wandern und Nicht-Verlaufen. Das Display aktualisiert sich einmal pro
-                Minute und behält sein Bild ohne Strom. Der Akku wird so fürs Satellitensuchen
-                verwendet und nicht fürs Leuchten von Pixeln.
-            </p>
-            <Row>
-                {features.map((f) => (
-                    <Col md={6} lg={3} className="mb-3" key={f.title}>
-                        <Card className="h-100">
-                            <Card.Body>
-                                <Card.Title as="h5">{f.title}</Card.Title>
-                                <Card.Text>{f.text}</Card.Text>
-                            </Card.Body>
-                        </Card>
+        <Container className="wandernavi">
+            <section className="wn-hero">
+                <Row className="align-items-center g-4">
+                    <Col lg={7}>
+                        <span className="wn-kicker">Open-Source-Wandernavi</span>
+                        <h2 className="wn-title">WanderNavi</h2>
+                        <p className="wn-subtitle">früher IndiaNavi</p>
+                        <p className="wn-lead">
+                            Ein kleiner Offline-Navigator mit 7-farbigem ePaper-Display. Er gibt keine
+                            Abbiegehinweise, sondern zeigt, wo du bist, auf einer echten Karte neben dem
+                            Track, den du laufen willst. Ohne Netz, ohne Abo, ohne Cloud: Die Karten liegen
+                            auf der SD-Karte und das Display bleibt auch in der prallen Sonne lesbar.
+                        </p>
                     </Col>
-                ))}
-            </Row>
+                    <Col lg={5}>
+                        <img
+                            src={process.env.PUBLIC_URL + "/img/navi_background.png"}
+                            alt="Illustration: zwei Wanderer vor einer Berglandschaft"
+                            className="wn-hero-image"
+                        />
+                    </Col>
+                </Row>
+            </section>
 
-            <h3>Sieben Farben, keine Hintergrundbeleuchtung</h3>
-            <p>
-                Das Display ist ein Waveshare-ACeP-5,65"-ePaper mit 600 × 448 Pixeln. Jedes Pixel
-                hat eine von sieben Farben. Die App wandelt OpenStreetMap-Kacheln genau in diese
-                Farben um und mischt dort, wo die Karte einen Zwischenton braucht, zwei davon im
-                Dither-Muster. Auf dem Panel wirken die Farben ruhiger und dunkler, wie Papier im
-                Tageslicht.
-            </p>
-            <p>
-                {colors.map(([index, name, hex, text]) => (
-                    <span
-                        key={index}
-                        className={"badge me-2 mb-2 border text-" + text}
-                        style={{ backgroundColor: hex }}
-                    >
-                        {index} {name}
-                    </span>
-                ))}
-            </p>
-
-            <h3>So funktioniert es</h3>
-            <ListGroup as="ol" numbered className="mb-4">
-                {steps.map(([title, text]) => (
-                    <ListGroup.Item as="li" key={title}>
-                        <b>{title}</b>: {text}
-                    </ListGroup.Item>
-                ))}
-            </ListGroup>
-
-            <h3>Die App</h3>
-            <p>
-                Die WanderNavi-App für Android übernimmt, was das kleine Gerät nicht kann: Orte
-                finden, Kartenkacheln laden und in ePaper-Farben umrechnen. Sie ist mit React
-                Native und Expo gebaut.
-            </p>
-            <ul>
-                <li>Track-Bibliothek: GPX-Dateien aus beliebigen Apps öffnen und den passenden senden</li>
-                <li>Karte mit Suche nach Orten und Koordinaten</li>
-                <li>Farbfilter mit Live-Vorschau, wie Kartenfarben zu Display-Farben werden</li>
-                <li>Übertragung über das WLAN des Geräts oder dein Heimnetz</li>
-                <li>Bluetooth: Kopplung, Zeit und Position, Display-Einstellungen, Firmware-Updates</li>
-            </ul>
-            <p>
+            <section className="wn-cta">
+                <div>
+                    <h3>Mehr erfahren auf wandernavi.app</h3>
+                    <p>Alle Infos zu Gerät, Funktionsweise, Android-App und Quellcode findest du auf der Projektseite.</p>
+                </div>
                 <Button
-                    variant="success"
+                    variant=""
+                    size="lg"
+                    className="wn-button wn-green"
+                    href={WANDERNAVI_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Zu wandernavi.app
+                </Button>
+            </section>
+
+            <section className="wn-section">
+                <h2 className="wn-section-title">Das Gerät</h2>
+                <p className="wn-section-lead">
+                    Gebaut zum Wandern und Nicht-Verlaufen. Das Display aktualisiert sich einmal pro Minute
+                    und behält sein Bild ohne Strom. Der Akku wird so fürs Satellitensuchen verwendet und
+                    nicht fürs Leuchten von Pixeln.
+                </p>
+                <Row className="wn-features g-3">
+                    {features.map((f) => (
+                        <Col sm={6} lg={3} key={f.title}>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title as="h3">{f.title}</Card.Title>
+                                    <Card.Text>{f.text}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+            </section>
+
+            <section className="wn-section wn-tinted">
+                <Row className="g-4 align-items-center">
+                    <Col lg={7}>
+                        <h2 className="wn-section-title">Sieben Farben, kein Licht</h2>
+                        <p>
+                            Das Display ist ein Waveshare-ACeP-5,65"-ePaper mit 600 × 448 Pixeln und ohne
+                            Hintergrundbeleuchtung. Jedes Pixel hat eine von sieben Farben. Die App wandelt
+                            OpenStreetMap-Kacheln genau in diese Farben um und mischt dort, wo die Karte einen
+                            Zwischenton braucht, zwei davon im Dither-Muster.
+                        </p>
+                        <p className="mb-0">
+                            Die reinen Farben sind die, mit denen die Firmware arbeitet. Auf dem Panel wirken
+                            sie ruhiger und dunkler, wie Papier im Tageslicht.
+                        </p>
+                    </Col>
+                    <Col lg={5}>
+                        <ul className="wn-palette">
+                            {colors.map(([index, name, pure, panel]) => (
+                                <li key={index}>
+                                    <span
+                                        className="wn-swatch"
+                                        style={{ "--pure": pure, "--panel": panel } as CSSProperties}
+                                    />
+                                    <b>{index}</b> {name}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="wn-note mt-2 mb-0">Links die reine Farbe, rechts wie das Panel sie zeigt.</p>
+                    </Col>
+                </Row>
+            </section>
+
+            <section className="wn-section">
+                <h2 className="wn-section-title">So funktioniert es</h2>
+                <Row as="ol" className="wn-steps g-4">
+                    {steps.map(([title, text], i) => (
+                        <Col as="li" sm={6} lg={3} key={title}>
+                            <span className="wn-step-number" aria-hidden="true">{i + 1}</span>
+                            <h4>{title}</h4>
+                            <p>{text}</p>
+                        </Col>
+                    ))}
+                </Row>
+            </section>
+
+            <section className="wn-section">
+                <h2 className="wn-section-title">Die App</h2>
+                <p className="wn-section-lead">
+                    Die WanderNavi-App für Android übernimmt, was das kleine Gerät nicht kann: Orte finden,
+                    Kartenkacheln laden und in ePaper-Farben umrechnen. Sie sieht auch aus wie das Gerät:
+                    sieben Farben, schwarze Konturen, eckige Kanten.
+                </p>
+                <ul className="wn-checklist">
+                    {appFeatures.map((f) => (
+                        <li key={f}>{f}</li>
+                    ))}
+                </ul>
+                <Button
+                    variant=""
+                    className="wn-button wn-orange"
                     href="https://github.com/DasBasti/IndiaNavi_App/releases"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     App für Android herunterladen
-                </Button>{" "}
-                <small className="text-muted">
-                    Die App gibt es derzeit nur für Android. Preise nennt die Projektseite nicht;
-                    laut ihr braucht das Gerät weder Abo noch Cloud.
-                </small>
-            </p>
+                </Button>
+                <p className="wn-note mt-3 mb-0">
+                    Die App gibt es derzeit nur für Android. Preise nennt die Projektseite nicht; das Gerät
+                    braucht weder Abo noch Cloud.
+                </p>
+            </section>
 
-            <h3>Technische Daten</h3>
-            <Table bordered responsive className="mb-4">
-                <tbody>
-                    {hardware.map(([k, v]) => (
-                        <tr key={k}>
-                            <th scope="row">{k}</th>
-                            <td>{v}</td>
-                        </tr>
+            <section className="wn-section">
+                <h2 className="wn-section-title">Technische Daten</h2>
+                <Table responsive className="wn-specs">
+                    <tbody>
+                        {hardware.map(([k, v]) => (
+                            <tr key={k}>
+                                <th scope="row">{k}</th>
+                                <td>{v}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </section>
+
+            <section className="wn-section">
+                <h2 className="wn-section-title">Open Source</h2>
+                <p className="wn-section-lead">Alles liegt auf GitHub: nachbauen, forken, Pull Requests schicken.</p>
+                <Row className="g-4">
+                    {repos.map((r) => (
+                        <Col md={4} key={r.title}>
+                            <Card className="wn-repo">
+                                <Card.Body>
+                                    <span className={"wn-badge " + r.badge[1]}>{r.badge[0]}</span>
+                                    <Card.Title as="h3">{r.title}</Card.Title>
+                                    <Card.Text>{r.text}</Card.Text>
+                                    <a href={r.url}>{r.label}</a>
+                                </Card.Body>
+                            </Card>
+                        </Col>
                     ))}
-                </tbody>
-            </Table>
+                </Row>
+            </section>
 
-            <h3>Open Source</h3>
-            <p>Alles liegt auf GitHub: nachbauen, forken, Pull Requests schicken.</p>
-            <Row>
-                <Col md={4} className="mb-3">
-                    <Card className="h-100">
-                        <Card.Body>
-                            <Card.Title>Firmware</Card.Title>
-                            <Card.Text>
-                                Firmware für den ESP32-S3: Display, GNSS, Karte, Bluetooth, WLAN-Upload-API.
-                                Rendert den Kartenbildschirm auch am PC. Lizenz: MIT.
-                            </Card.Text>
-                            <a href="https://github.com/DasBasti/IndiaNavi_Firmware">
-                                github.com/DasBasti/IndiaNavi_Firmware
-                            </a>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col md={4} className="mb-3">
-                    <Card className="h-100">
-                        <Card.Body>
-                            <Card.Title>App</Card.Title>
-                            <Card.Text>Die WanderNavi-Begleit-App für Android (React Native, Expo).</Card.Text>
-                            <a href="https://github.com/DasBasti/IndiaNavi_App">
-                                github.com/DasBasti/IndiaNavi_App
-                            </a>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col md={4} className="mb-3">
-                    <Card className="h-100">
-                        <Card.Body>
-                            <Card.Title>Karten erstellen</Card.Title>
-                            <Card.Text>Konverter, der Kartenkacheln für das Gerät erzeugt.</Card.Text>
-                            <a href="https://github.com/DasBasti/IndiaNavi_Converter/tree/rust/rust">
-                                github.com/DasBasti/IndiaNavi_Converter
-                            </a>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+            <section className="wn-section wn-tinted">
+                <h2 className="wn-section-title">Von IndiaNavi zu WanderNavi</h2>
+                <p className="mb-0">
+                    Das Projekt startete als IndiaNavi, ein Navi für Abenteurer mit Hut und Rucksack. Das
+                    Produkt heißt inzwischen WanderNavi, der alte Name taucht aber noch auf: Das Gerät
+                    meldet sich per WLAN und Bluetooth als <code>IndiaNavi-XXXX</code> und auch die
+                    Repositories tragen ihn.
+                </p>
+            </section>
 
-            <h3>Von IndiaNavi zu WanderNavi</h3>
-            <p>
-                Das Projekt startete als IndiaNavi, ein Navi für Abenteurer mit Hut und Rucksack.
-                Das Produkt heißt inzwischen WanderNavi, der alte Name taucht aber noch auf: Das
-                Gerät meldet sich per WLAN und Bluetooth als <code>IndiaNavi-XXXX</code> und auch
-                die Repositories tragen ihn.
-            </p>
+            <div className="wn-dither" aria-hidden="true" />
 
-            <p className="mt-3">
-                Entwicklungs-Log: <a href="https://hackaday.io/project/179890/logs">hackaday.io/project/179890</a>
-            </p>
-            <p className="text-muted">Kartendaten © OpenStreetMap-Mitwirkende.</p>
-
-            <p className="text-center my-4">
-                <Button variant="outline-primary" href={WANDERNAVI_URL} target="_blank" rel="noopener noreferrer">
+            <div className="text-center mb-4">
+                <Button
+                    variant=""
+                    size="lg"
+                    className="wn-button wn-green"
+                    href={WANDERNAVI_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     wandernavi.app besuchen →
                 </Button>
+            </div>
+
+            <p className="wn-footer text-center mb-0">
+                Entwicklungs-Log: <a href="https://hackaday.io/project/179890/logs">hackaday.io/project/179890</a>
+                {" · "}Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende
             </p>
         </Container>
     )
