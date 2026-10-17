@@ -41,8 +41,7 @@
     "start": "REACT_APP_REDIRECT_URI=\"http://localhost:3000\" REACT_APP_BUILD_TIME=debug react-scripts start",
     "build": "REACT_APP_REDIRECT_URI=\"https://platinenmacher.tech\" REACT_APP_BUILD_TIME=$(date \"+%Y%m%d%H%M\") react-scripts build",
     "test": "REACT_APP_BUILD_TIME=test react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "rsync -arv build/ root@platinenmacher.tech:/var/www/html"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
