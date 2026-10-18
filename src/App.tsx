@@ -59,6 +59,15 @@ const Logout = () => {
     return (null);
 }
 
+const CONSENT_COOKIE = "privacy_accepted";
+
+const hasConsentCookie = () =>
+    document.cookie.split("; ").some(c => c === CONSENT_COOKIE + "=true");
+
+const setConsentCookie = () => {
+    document.cookie = CONSENT_COOKIE + "=true; max-age=" + 60 * 60 * 24 * 365 + "; path=/; SameSite=Lax";
+}
+
 export default function App() {
     const [chat, setChat] = useState<tmi.Client>();
     const [toasts, setToasts] = useState<Array<ChatToastProps>>([]);
@@ -110,10 +119,15 @@ export default function App() {
         chat?.connect();
     }, [chat]);
 
+    const acceptPrivacy = (ref: HTMLDivElement, key: number) => {
+        setConsentCookie();
+        hideToast(ref, key);
+    };
+
     useEffect(() => {
         const name = getUsername();
-        if (name === "")
-            setToasts([{ username: "Twitch Privatsphäre", message: "Hier werden personenbezogene Daten nur verwendet, wenn ein Login über Twitch.tv durchgeführt wird. Wenn die Login with Twitch Funktionalität gestartet wird, werden Daten an Twitch.tv versendet.", datetime: "now", onTimeout: hideToast, autoHide: false }]);
+        if (name === "" && !hasConsentCookie())
+            setToasts([{ username: "Twitch Privatsphäre", message: "Hier werden personenbezogene Daten nur verwendet, wenn ein Login über Twitch.tv durchgeführt wird. Wenn die Login with Twitch Funktionalität gestartet wird, werden Daten an Twitch.tv versendet.", datetime: "now", onTimeout: hideToast, onAccept: acceptPrivacy, autoHide: false }]);
     }, [user]);
 
     return (

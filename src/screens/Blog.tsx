@@ -31,7 +31,7 @@ export default function Blog() {
                     </a>
                 </p>
                 <p>
-                    Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. Montags und Mittwochs gegen 19:30 Uhr
+                    Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. Mittwochs gegen 19:00 Uhr
                     Bleibt gespannt auf neue Projekte und Updates!
                 </p>
             </Col>
