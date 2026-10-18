@@ -49,14 +49,14 @@ export default function ProjectFeed(props: ProjectFeedProps) {
             <Container>
               <Row>
                 {projects.map((topic: any, key: number) => (
-                  <Card as={Col} key={key} lg={3} style={{ margin: ".5em" }}>
+                  <Card as={Col} key={key} lg={3} style={{ margin: ".5em", padding: 0 }}>
                     <a href={topic.link}>
                       <Card.Img
                         variant="top"
                         src={topic.image_url}
                         className={"projectImage"}
                         width={"100%"}
-                        height={"350"}
+                        height={"220"}
                       />
                     </a>
                     <Card.Body>
