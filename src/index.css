@@ -1,16 +1,16 @@
 /* Stream theme: dark lab bench / PCB look for an embedded electronics and software Twitch channel.
-   Twitch purple as the main accent, copper for traces and highlights, signal green for "live" states. */
+   Solder mask green as the main accent, copper for traces and highlights, lime signal green for "live" states. */
 :root {
-  --pm-bg: #0c0a12;
-  --pm-surface: #15121d;
-  --pm-surface-2: #1d1928;
-  --pm-border: #2c2638;
-  --pm-text: #e8e4f0;
-  --pm-muted: #a09ab0;
-  --pm-twitch: #9146ff;
-  --pm-twitch-light: #b48aff;
+  --pm-bg: #0a0f0c;
+  --pm-surface: #111a14;
+  --pm-surface-2: #17231b;
+  --pm-border: #24382b;
+  --pm-text: #e4efe7;
+  --pm-muted: #93a89a;
+  --pm-accent: #22c55e;
+  --pm-accent-light: #4ade80;
   --pm-copper: #d9904a;
-  --pm-signal: #3dff8f;
+  --pm-signal: #a3e635;
   --pm-live: #eb0400;
   --pm-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
@@ -20,12 +20,12 @@
   --bs-body-bg: var(--pm-bg);
   --bs-body-color: var(--pm-text);
   --bs-border-color: var(--pm-border);
-  --bs-link-color: var(--pm-twitch-light);
+  --bs-link-color: var(--pm-accent-light);
   --bs-link-hover-color: var(--pm-copper);
-  --bs-link-color-rgb: 180, 138, 255;
+  --bs-link-color-rgb: 74, 222, 128;
   --bs-link-hover-color-rgb: 217, 144, 74;
-  --bs-primary: var(--pm-twitch);
-  --bs-primary-rgb: 145, 70, 255;
+  --bs-primary: var(--pm-accent);
+  --bs-primary-rgb: 34, 197, 94;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
   background-color: var(--pm-bg);
   /* drill grid plus a faint glow, like a bare board under the bench lamp */
   background-image:
-    radial-gradient(circle at 20% -10%, rgba(145, 70, 255, 0.18), transparent 45%),
+    radial-gradient(circle at 20% -10%, rgba(34, 197, 94, 0.18), transparent 45%),
     radial-gradient(circle at 100% 30%, rgba(217, 144, 74, 0.08), transparent 40%),
     radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.5px);
   background-size: auto, auto, 24px 24px;
@@ -67,7 +67,7 @@ hr {
   border: 0;
   height: 2px;
   opacity: 1;
-  background: linear-gradient(90deg, var(--pm-twitch), var(--pm-copper) 40%, transparent);
+  background: linear-gradient(90deg, var(--pm-accent), var(--pm-copper) 40%, transparent);
 }
 
 code {
@@ -76,7 +76,7 @@ code {
 }
 
 a {
-  color: var(--pm-twitch-light);
+  color: var(--pm-accent-light);
 }
 
 a:hover {
@@ -84,7 +84,7 @@ a:hover {
 }
 
 ::selection {
-  background: var(--pm-twitch);
+  background: var(--pm-accent);
   color: #fff;
 }
 
@@ -100,12 +100,12 @@ a:hover {
 }
 
 .btn-primary {
-  --bs-btn-bg: var(--pm-twitch);
-  --bs-btn-border-color: var(--pm-twitch);
-  --bs-btn-hover-bg: #772ce8;
-  --bs-btn-hover-border-color: #772ce8;
-  --bs-btn-active-bg: #5c16c5;
-  --bs-btn-active-border-color: #5c16c5;
+  --bs-btn-bg: #15803d;
+  --bs-btn-border-color: #15803d;
+  --bs-btn-hover-bg: #166534;
+  --bs-btn-hover-border-color: #166534;
+  --bs-btn-active-bg: #14532d;
+  --bs-btn-active-border-color: #14532d;
   font-weight: 600;
 }
 
@@ -118,12 +118,12 @@ a:hover {
 }
 
 .navbar {
-  background-color: rgba(12, 10, 18, 0.85) !important;
+  background-color: rgba(10, 15, 12, 0.85) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 0;
   border-bottom: 1px solid var(--pm-border);
-  box-shadow: 0 1px 0 rgba(145, 70, 255, 0.35);
+  box-shadow: 0 1px 0 rgba(34, 197, 94, 0.35);
   margin-bottom: 10px;
 }
 
@@ -142,7 +142,7 @@ a:hover {
 }
 
 .navbar-brand img {
-  filter: drop-shadow(0 0 6px rgba(145, 70, 255, 0.6));
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
   margin-right: 0.4em;
 }
 
@@ -161,8 +161,8 @@ a:hover {
 
 .card:hover {
   transform: translateY(-3px);
-  border-color: var(--pm-twitch);
-  box-shadow: 0 8px 24px rgba(145, 70, 255, 0.2);
+  border-color: var(--pm-accent);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
 }
 
 .card-title {
@@ -176,15 +176,15 @@ a:hover {
 }
 
 .toast {
-  --bs-toast-bg: rgba(21, 18, 29, 0.95);
+  --bs-toast-bg: rgba(17, 26, 20, 0.95);
   --bs-toast-header-bg: var(--pm-surface-2);
   --bs-toast-header-color: var(--pm-text);
   --bs-toast-color: var(--pm-text);
-  --bs-toast-border-color: var(--pm-twitch);
+  --bs-toast-border-color: var(--pm-accent);
 }
 
 .toast-header svg {
-  color: var(--pm-twitch-light);
+  color: var(--pm-accent-light);
   margin-right: 0.5em;
 }
 
@@ -197,14 +197,14 @@ a:hover {
 .form-control:focus {
   background-color: var(--pm-surface-2);
   color: var(--pm-text);
-  border-color: var(--pm-twitch);
-  box-shadow: 0 0 0 0.2rem rgba(145, 70, 255, 0.25);
+  border-color: var(--pm-accent);
+  box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.25);
 }
 
 .dropdown-menu {
   --bs-dropdown-bg: var(--pm-surface-2);
   --bs-dropdown-link-color: var(--pm-text);
-  --bs-dropdown-link-hover-bg: var(--pm-twitch);
+  --bs-dropdown-link-hover-bg: var(--pm-accent);
   --bs-dropdown-link-hover-color: #fff;
   --bs-dropdown-border-color: var(--pm-border);
 }
@@ -216,7 +216,7 @@ a:hover {
   border: 1px solid var(--pm-border);
   border-radius: 12px;
   background:
-    linear-gradient(135deg, rgba(145, 70, 255, 0.12), transparent 50%),
+    linear-gradient(135deg, rgba(34, 197, 94, 0.12), transparent 50%),
     var(--pm-surface);
   position: relative;
 }
@@ -264,7 +264,7 @@ a:hover {
 }
 
 .stream-hero h1 span {
-  color: var(--pm-twitch-light);
+  color: var(--pm-accent-light);
 }
 
 .stream-lead {
@@ -314,8 +314,8 @@ a:hover {
   aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--pm-twitch);
-  box-shadow: 0 0 0 4px rgba(145, 70, 255, 0.12), 0 12px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--pm-accent);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12), 0 12px 40px rgba(0, 0, 0, 0.5);
   background: #000;
 }
 
@@ -372,7 +372,7 @@ a:hover {
 
 .linkListLinks svg {
   width: 1.1em;
-  color: var(--pm-twitch-light);
+  color: var(--pm-accent-light);
 }
 
 .linkListLinks:hover {

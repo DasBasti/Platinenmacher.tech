@@ -19,7 +19,7 @@ export default function UpDownVote(props: UpDownVoteProps) {
         offset_up = 2;
     else if (voted === "False")
         offset_down = 0;
-    const colors = ["#eb0400", "#a09ab0", "#3dff8f"]
+    const colors = ["#eb0400", "#93a89a", "#3dff8f"]
     const cb = callbackfn ? callbackfn : () => { }
     return (
         <div>
