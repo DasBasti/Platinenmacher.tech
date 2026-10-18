@@ -38,7 +38,7 @@ export default function Blog() {
                         {topics.map((topic) => <li key={topic}>{topic}</li>)}
                     </ul>
                     <p className="stream-schedule">
-                        <strong>Mo</strong> &amp; <strong>Mi</strong> ab 19:30 Uhr
+                        <strong>Mittwochs</strong> gegen 19:00 Uhr
                     </p>
                     <div className="stream-actions">
                         <a href={TWITCH_URL} className="btn btn-primary">
@@ -73,7 +73,7 @@ export default function Blog() {
                         AI, Software, Löten, Firmwares und vieles mehr.
                     </p>
                     <p className="mb-0">
-                        Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. Montags und Mittwochs gegen 19:30 Uhr
+                        Ich freue mich auf eure Chat-Nachrichten und gemeinsame Projekte. Mittwochs gegen 19:00 Uhr
                         Bleibt gespannt auf neue Projekte und Updates!
                     </p>
                 </div>

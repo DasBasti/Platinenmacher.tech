@@ -4,7 +4,7 @@ export default function Navigation() {
     return (
     <footer className="site-footer">
         <Container>
-            <span><span className="ok">●</span> Build {process.env.REACT_APP_BUILD_TIME}</span>
+            <span><span className="ok">●</span> Build {import.meta.env.VITE_BUILD_TIME}</span>
             <a href="/impressum">Impressum</a>
         </Container>
     </footer>

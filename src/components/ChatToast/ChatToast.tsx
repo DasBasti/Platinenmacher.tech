@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Toast } from "react-bootstrap";
+import { Button, Toast } from "react-bootstrap";
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -11,6 +11,7 @@ export type ChatToastProps = {
     datetime: String;
     onTimeout: Function;
     autoHide?: boolean;
+    onAccept?: Function;
 }
 
 export default function ChatToast(props: ChatToastProps) {
@@ -26,6 +27,11 @@ export default function ChatToast(props: ChatToastProps) {
         </Toast.Header>
         <Toast.Body>
             {props.message}
+            {props.onAccept &&
+                <div className="mt-2 text-end">
+                    <Button size="sm" onClick={() => props.onAccept!(self.current, props.id)}>Akzeptieren</Button>
+                </div>
+            }
         </Toast.Body>
     </Toast>;
 }

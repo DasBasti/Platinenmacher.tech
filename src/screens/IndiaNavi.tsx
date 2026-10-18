@@ -117,7 +117,7 @@ export default function IndiaNavi() {
                     </Col>
                     <Col lg={5}>
                         <img
-                            src={process.env.PUBLIC_URL + "/img/navi_background.png"}
+                            src={import.meta.env.BASE_URL + "img/navi_background.png"}
                             alt="Illustration: zwei Wanderer vor einer Berglandschaft"
                             className="wn-hero-image"
                         />
