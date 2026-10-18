@@ -9,7 +9,7 @@ export default function Navigation() {
         <Navbar expand="lg" fixed="top" variant="dark">
             <Container>
                 <Navbar.Brand href="/">
-                    <img src={process.env.PUBLIC_URL + "/img/CHIPlogo.png"} alt="Chip Logo" width={48}/>
+                    <img src={import.meta.env.BASE_URL + "img/CHIPlogo.png"} alt="Chip Logo" width={48}/>
                     Der Platinenmacher</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>

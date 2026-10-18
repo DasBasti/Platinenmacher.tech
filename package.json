@@ -2,6 +2,7 @@
   "name": "page",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",
     "@fortawesome/fontawesome-svg-core": "^7.3.1",
@@ -20,46 +21,35 @@
     "react-dom": "^19.3.1",
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^7.18.4",
-    "react-scripts": "^5.0.1",
     "tmi.js": "^1.8.5"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.10.0",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.8",
-    "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.26",
     "@types/node": "^25.9.9",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/tmi.js": "^1.8.6",
-    "typescript": "^5.9.3"
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  },
+  "resolutions": {
+    "ws": "^8.22.0"
   },
   "scripts": {
-    "start": "REACT_APP_REDIRECT_URI=\"http://localhost:3000\" REACT_APP_BUILD_TIME=debug react-scripts start",
-    "build": "REACT_APP_REDIRECT_URI=\"https://platinenmacher.tech\" REACT_APP_BUILD_TIME=$(date \"+%Y%m%d%H%M\") react-scripts build",
-    "test": "REACT_APP_BUILD_TIME=test react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "https://platinenmacher.tech/"
+    "start": "VITE_REDIRECT_URI=\"http://localhost:3000\" VITE_BUILD_TIME=debug vite",
+    "build": "tsc --noEmit && eslint src && VITE_REDIRECT_URI=\"https://platinenmacher.tech\" VITE_BUILD_TIME=$(date \"+%Y%m%d%H%M\") vite build",
+    "preview": "vite preview",
+    "lint": "eslint src",
+    "test": "VITE_BUILD_TIME=test vitest run"
+  }
 }
