@@ -119,12 +119,11 @@ export default function App() {
         chat?.connect();
     }, [chat]);
 
-    const acceptPrivacy = (ref: HTMLDivElement, key: number) => {
-        setConsentCookie();
-        hideToast(ref, key);
-    };
-
     useEffect(() => {
+        const acceptPrivacy = (ref: HTMLDivElement, key: number) => {
+            setConsentCookie();
+            ref.remove();
+        };
         const name = getUsername();
         if (name === "" && !hasConsentCookie())
             setToasts([{ username: "Twitch Privatsphäre", message: "Hier werden personenbezogene Daten nur verwendet, wenn ein Login über Twitch.tv durchgeführt wird. Wenn die Login with Twitch Funktionalität gestartet wird, werden Daten an Twitch.tv versendet.", datetime: "now", onTimeout: hideToast, onAccept: acceptPrivacy, autoHide: false }]);

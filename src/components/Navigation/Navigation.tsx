@@ -6,10 +6,10 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export default function Navigation() {
     return (
-        <Navbar expand="lg" fixed="top" >
+        <Navbar expand="lg" fixed="top" variant="dark">
             <Container>
                 <Navbar.Brand href="/">
-                    <img src={process.env.PUBLIC_URL + "/img/CHIPlogo.png"} alt="Chip Logo" width={64}/>{' '}
+                    <img src={process.env.PUBLIC_URL + "/img/CHIPlogo.png"} alt="Chip Logo" width={48}/>
                     Der Platinenmacher</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
@@ -23,14 +23,14 @@ export default function Navigation() {
                     <Nav className="me-auto">
                         <Nav.Link href="/impressum">Impressum</Nav.Link>
                     </Nav>
+                    <Nav>
+                        {isLoggedIn() ?
+                        <Nav.Link href={"/logout"}>Logout {getUsername()}</Nav.Link>
+                        :
+                        <Nav.Link href={"https://id.twitch.tv/oauth2/authorize?client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope.join(" ")}>Login with Twitch</Nav.Link>
+                    }
+                    </Nav>
                 </Navbar.Collapse>
-                <Nav>
-                    {isLoggedIn() ?
-                    <Nav.Link href={"/logout"}>Logout {getUsername()}</Nav.Link>
-                    :
-                    <Nav.Link href={"https://id.twitch.tv/oauth2/authorize?client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope.join(" ")}>Login with Twitch</Nav.Link>
-                }
-                </Nav>
             </Container>
         </Navbar>
     );

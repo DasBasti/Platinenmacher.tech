@@ -15,6 +15,9 @@
   --wn-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
   color: var(--wn-ink);
+  /* the site is dark, this page keeps the light display look on its own sheet */
+  background: var(--wn-paper);
+  padding-top: 24px;
   font-size: 17px;
   line-height: 1.55;
   padding-bottom: 32px;
